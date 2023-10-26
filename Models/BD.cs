@@ -58,9 +58,8 @@ public class BD{
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
             string sql = "SELECT Nombre, Foto FROM Mascota WHERE IdDueno = @pIdDueno";
-            usuario = db.QueryFirstOrDefault<Usuario>(sql, new { pIdDueno = IdDueno});
+            return = db.Query<Mascota>(sql, new { pIdDueno = IdDueno}).ToList();
         }
-        return usuario;
     }
 
 //.....Cambiar

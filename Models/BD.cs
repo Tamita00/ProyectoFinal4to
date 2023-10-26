@@ -54,6 +54,7 @@ public class BD{
 //.......Mostrar
 
     public static List<Mascota> MostrarMascotas(int IdDueno){
+        
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
             string sql = "SELECT Nombre, Foto FROM Mascota WHERE IdDueno = @pIdDueno";

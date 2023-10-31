@@ -1,0 +1,150 @@
+
+--CREAR--
+
+CREATE PROCEDURE sp_CrearMascota
+    @pIdDueno int,
+	@pTipoMascota varchar(50),
+	@pGenero varchar(50),
+	@pNombre varchar(50),
+	@pRaza varchar(50),
+	@pFechaNacimiento date,
+	@pFoto varchar(50)
+AS
+BEGIN
+	INSERT INTO Mascota(IdDueno, TipoMascota, Genero, Nombre, Raza, FechaNacimiento, Foto)
+	VALUES (@pIdDueno, @pTipoMascota, @pGenero, @pNombre, @pRaza, @pFechaNacimiento, @pFoto)
+END
+
+
+CREATE PROCEDURE sp_CrearDueno
+    @pContraseña varchar(50),
+	@pDNI int,
+	@pNombre varchar(50),
+	@pEmail varchar(50)
+AS
+BEGIN
+	INSERT INTO Dueno(Contraseña, DNI, Nombre, Email)
+	VALUES (@pContraseña, @pDNI, @pNombre, @pEmail)
+END
+
+
+CREATE PROCEDURE sp_CrearAntecedente
+    @pIdMascota int,
+	@pLugar varchar(50),
+	@pFecha date,
+	@pInfo varchar(50)
+AS
+BEGIN
+	INSERT INTO Antecedente(IdMascota, Lugar, Fecha, Info)
+	VALUES (@pIdMascota, @pLugar, @pFecha, @pInfo)
+END
+
+
+CREATE PROCEDURE sp_CrearVacuna
+    @pTipo varchar(50),
+	@pFechaDosis date,
+	@pFechaCaducidad date
+AS
+BEGIN
+	INSERT INTO Vacuna(Tipo, FechaDosis, FechaCaducidad)
+	VALUES (@pTipo, @pFechaDosis, @pFechaCaducidad)
+END
+
+
+CREATE PROCEDURE sp_CrearNota
+    @pLugar varchar(50),
+	@pInfo varchar(50),
+	@pFecha date
+AS
+BEGIN
+	INSERT INTO Nota(Lugar, Fecha, Info)
+	VALUES (@pLugar, @pFecha, @pInfo)
+END
+
+
+--MOSTRAR--
+
+CREATE PROCEDURE sp_MostrarMascotas
+    @pIdDueno int
+AS
+BEGIN
+	SELECT IdMascota, Nombre, Foto FROM Mascota WHERE IdDueno = @pIdDueno
+END
+
+
+CREATE PROCEDURE sp_MostrarNotas
+    @pIdMascota int,
+	@FechaAhora date
+AS
+BEGIN
+	SELECT * FROM Nota WHERE IdMascota = @pIdMascota AND Fecha = @FechaAhora
+END
+
+
+CREATE PROCEDURE sp_MostrarDatosPersonales
+    @pIdMascota int
+AS
+BEGIN
+	SELECT * FROM Mascota
+	INNER JOIN Dueno ON Mascota.IdDueno = Dueno.Id
+	WHERE Mascota.IdMascota = @pIdMascota
+END
+
+
+CREATE PROCEDURE sp_MostrarAntecedentes
+    @pIdMascota int
+AS
+BEGIN
+	SELECT * FROM Antecedente WHERE  IdMascota = @pIdMascota
+END
+
+
+CREATE PROCEDURE sp_MostrarVacunas
+    @pIdMascota int
+AS
+BEGIN
+	SELECT Nombre FROM Vacuna
+	INNER JOIN [VACUNAS x MASCOTAS] ON Vacuna.IdVacuna = [VACUNAS x MASCOTAS].IdVacuna
+	INNER JOIN Mascota ON Mascota.IdMascota = [VACUNAS x MASCOTAS].IdMascota
+	WHERE Mascota.IdMascota = @pIdMascota
+END
+
+
+CREATE PROCEDURE sp_MostrarVacunaEspecifica
+    @pIdMascota int,
+	@pIdVacuna int
+AS
+BEGIN
+	SELECT * FROM Vacuna
+	INNER JOIN [VACUNAS x MASCOTAS] ON Vacuna.IdVacuna = [VACUNAS x MASCOTAS].IdVacuna
+	INNER JOIN Mascota ON Mascota.IdMascota = [VACUNAS x MASCOTAS].IdMascota
+	WHERE Mascota.IdMascota = @pIdMascota AND Vacuna.IdVacuna = @pIdVacuna
+END
+
+--CAMBIAR--
+
+CREATE PROCEDURE sp_CambiarContrasena
+    @pContraseña varchar(50),
+	@pEmailvarchar(50)
+AS
+BEGIN
+	UPDATE Dueno SET Contraseña = @pContraseña WHERE Email = @pEmail
+END
+
+
+
+
+
+--TRIGERS--
+CREATE TRIGGER NoRepetirUsuarios
+ON Dueno
+FOR INSERT AS 
+BEGIN
+
+		IF	 ((SELECT COUNT(DNI) FROM Dueno WHERE DNI = (SELECT DNI FROM inserted)) > 1)
+		BEGIN
+			ROLLBACK TRANSACTION
+			PRINT ('No es posible')
+		END
+
+END

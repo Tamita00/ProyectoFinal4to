@@ -10,7 +10,7 @@ public class BD{
     public static void AgregarDueno(string Contraseña, int DNI, string Nombre, string Email){
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
-            string sql = "INSERT INTO Dueno(Contraseña, DNI, Nombre, Email) VALUES (@pContraseña, @pDNI, @pNombre, @pNombre, @pEmail)";
+            string sql = "sp_CrearDueno pContraseña, pDNI, pNombre, pEmail";
             db.Execute(sql, new { pContraseña = Contraseña, pDNI = DNI, pNombre = Nombre, pEmail = Email});
 
         }   
@@ -19,17 +19,17 @@ public class BD{
     public static void AgregarMascota(int IdDueno, string TipoMascota, string Genero, string Nombre, string Raza, DateTime FechaNacimiento, string Foto ){
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
-            string sql = "INSERT INTO Mascota(IdDueno, TipoMascota, Genero, Nombre, Raza, FechaNacimiento, Foto) VALUES (@pIdDueno, @pTipoMascota, @pGenero, @pNombre, @pRaza, @pFechaNacimiento, @pFoto)";
+            string sql = "sp_CrearMascota pIdDueno, pTipoMascota, pGenero, pNombre, pRaza, pFechaNacimiento, pFoto";
             db.Execute(sql, new {pIdDueno = IdDueno, pTipoMascota = TipoMascota, pGenero = Genero, pNombre = Nombre, pRaza = Raza, pFechaNacimiento = FechaNacimiento, pFoto = Foto});
 
         }   
     }
 
-    public static void AgregarAntecedentes(int IdMascota,string Lugar, DateTime Fecha){
+    public static void AgregarAntecedentes(int IdMascota,string Lugar, DateTime Fecha, string Info){
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
-            string sql = "INSERT INTO Antecedentes(IdMascota, Lugar, Fecha) VALUES (@pIdMascota, @pLugar, @pFecha)";
-            db.Execute(sql, new {pIdMascota = IdMascota, pLugar = Lugar, pFecha = Fecha});
+            string sql = "sp_CrearAntecedente pIdMascota, pLugar, pFecha, pInfo";
+            db.Execute(sql, new {pIdMascota = IdMascota, pLugar = Lugar, pFecha = Fecha, pInfo = Info});
 
         }   
     }
@@ -37,16 +37,17 @@ public class BD{
     public static void AgregarVacunas(string Tipo, DateTime FechDosis, DateTime FechaCaducidad){
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
-            string sql = "INSERT INTO Vacunas(Tipo, FechaDosis, FechaCaducidad) VALUES (@pTipo, @pFechaDosis, @pFechaCaducidad)";
+            string sql = "sp_CrearVacuna pTipo, pFechaDosis, pFechaCaducidad";
             db.Execute(sql, new {pIdMascota = IdMascota, pLugar = Lugar, pFecha = Fecha});
 
         }   
     }
-    public static void AgregarVacunas(int IdMascota, DateTime Fecha, string Lugar, string Info){
+
+    public static void AgregarNota(string Lugar, DateTime Fecha, string Info){
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
-            string sql = "INSERT INTO Vacunas(IdMascota, Fecha, Lugar, Info) VALUES (@pIdMascota, @pFecha, @pLugar, @pInfo)";
-            db.Execute(sql, new {pIdMascota = IdMascota, pFecha = Fecha, pLugar = Lugar, pInfo = Info});
+            string sql = "sp_CrearNota pLugar, pInfo, pFecha";
+            db.Execute(sql, new {pLugar = Lugar, pInfo = Info, pFecha = Fecha});
 
         }   
     }
@@ -57,17 +58,53 @@ public class BD{
         
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
-            string sql = "SELECT Nombre, Foto FROM Mascota WHERE IdDueno = @pIdDueno";
+            string sql = "sp_MostrarMascotas pIdDueno";
             return = db.Query<Mascota>(sql, new { pIdDueno = IdDueno}).ToList();
         }
     }
 
-//.....Cambiar
-    public static void CambiarContra(string UserName, string Contraseña){
+    public static List</*QUE DEVUELVO?*/> MostrarDatosPersonales(int IdMascota){
+        
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
-            string sql = "UPDATE Usuario SET Contraseña = @pcontraseña WHERE UserName = @pUserName";
-            db.Execute(sql, new { pUserName = UserName, pcontraseña = Contraseña});
+            string sql = "sp_MostrarDatosPersonales pIdMascota";
+            return = db.Query</*QUE DEVUELVO?*/>(sql, new { pIdMascota = IdMascota}).ToList();
+        }
+    }
+
+    public static List<Antecedente> MostrarAntecedentes(int IdMascota){
+        
+        using (SqlConnection db = new SqlConnection(ConnectionString))
+        {
+            string sql = "sp_MostrarAntecedentes pIdMascota";
+            return = db.Query<Antecedente>(sql, new { pIdMascota = IdMascota}).ToList();
+        }
+    }
+
+    public static List<Vacuna> MostrarVacunas(int IdMascota){
+        
+        using (SqlConnection db = new SqlConnection(ConnectionString))
+        {
+            string sql = "sp_MostrarVacunas pIdMascota";
+            return = db.Query<Antecedente>(sql, new { pIdMascota = IdMascota}).ToList();
+        }
+    }
+
+    public static List<Vacuna> MostrarVacunaEspecifica(int IdMascota, int IdVacuna){
+        
+        using (SqlConnection db = new SqlConnection(ConnectionString))
+        {
+            string sql = "sp_MostrarVacunaEspecifica pIdMascota pIdVacuna";
+            return = db.Query<Antecedente>(sql, new { pIdMascota = IdMascota, pIdVacuna = IdVacuna}).ToList();
+        }
+    }
+
+//.....Cambiar
+    public static void CambiarContra(string Email, string Contraseña){
+        using (SqlConnection db = new SqlConnection(ConnectionString))
+        {
+            string sql = "sp_CambiarContrasena pEmail pContraseña";
+            db.Execute(sql, new { pEmail = Email, pContraseña = Contraseña});
         }    
     }
 

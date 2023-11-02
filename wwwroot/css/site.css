@@ -1,21 +1,195 @@
-html {
-  font-size: 14px;
-  position: relative;
-  min-height: 100%;
+@font-face {
+  font-family: 'Inria Serif';
+  src: url('Fuentes/inria-serif.regular.otf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+@font-face {
+  font-family: 'Petita Light';
+  src: url('Fuentes/petita/PetitaLight.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
 }
+
+@font-face {
+  font-family: 'Petita Medium';
+  src: url('Fuentes/petita/PetitaMedium.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Petita Bold';
+  src: url('Fuentes/petita/PetitaBold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+
+
+/*SIN LOGUEAR*/
 
 body {
-  margin: 20px 60px 0px 20px;
+  font-family: 'Petita Medium';
 }
 
-footer {
-  position: fixed; 
-  bottom: 0; 
-  margin: 10px 0px 20px 0px;
+.contenedor {
+  margin-top: 1.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.contenedor .sinLoguear {
+  width: 20em;
+  margin-bottom: 1em;
+}
+
+h2 {
+  font-family: 'Inria Serif';
+  font-weight: 500;
+}
+
+.botonPrimario:link,
+.botonPrimario:visited {
+  background-color: #aedddd;
+  color: #524d4d;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 3em;
+  display: inline-block;
+  margin-bottom: 0.8em;
+}
+
+.botonPrimario:hover,
+.botonPrimario:active {
+  background-color: #a3c9c9;
+  text-decoration: none;
+  color: #524d4d;
+  margin-bottom: 0.8em;
+}
+
+.botonSecundario:link,
+.botonSecundario:visited {
+  margin-bottom: 0.5em;
+  text-decoration: none;
+  color: #524d4d;
+}
+
+.botonSecundario:hover,
+.botonSecundario:active {
+  text-decoration: none;
+  color: #867c7c;
+}
+
+
+/*REGISTRARSE*/
+
+.volver {
+  margin-left: 1em;
+  margin-top: 1em;
+  width: 2em;
+}
+
+.contenedor .input .registrarse {
+  width: 17em;
+}
+
+.contenedor .input .corto {
+  width: 15em;
+  margin-left: 2em;
+  margin-bottom: 1.5em;
+}
+
+input {
+  border-bottom: 1.5px solid #3c93a7 !important;
+  background: transparent !important;
+  border: 0;
+}
+
+input:focus {
+  outline: none !important;
+  outline-offset: 0;
+}
+
+input:active {
+  outline: none !important;
+  outline-offset: 0 !important;
+}
+
+.contenedor .input .largo {
+  width: 32.2em;
+  margin-left: 2em;
+  margin-bottom: 1.5em;
+}
+
+
+/*REGISTRARSE MASCOTA*/
+
+.btn-light {
+  margin-left: 2em;
+  margin-right: 2em;
+  background-color: #E0F0F0;
+  border: 1px solid #b5c4c4;
+  margin-bottom: 1em;
+}
+
+/*ELEGIR MASCOTA*/
+
+.mascotas{
+  margin-left: 7em;
+  margin-right: 7em;
+  flex-wrap: wrap;
+  display: flex;
+}
+
+.mascotas_img{
+  border-radius: 5em;
+  width: 20em;
+  padding: 1em;
+}
+
+/*INDEX*/
+
+.MiMascota {
+  background-color: #D3EDED;
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.MiMascota a:link {
+  
+  background-color: #fdfdfd;
+  color: rgb(173, 166, 166);
+  padding: 15px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border: solid rgb(202, 191, 191);
+  border-radius: 7px;
+}
+.MiMascota a:visited {
+  background-color: #fdfdfd;
+  color: rgb(173, 166, 166);
+  padding: 15px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border: solid rgb(202, 191, 191);
+  border-radius: 7px;
+}
+
+.MiMascota a:hover,
+a:active {
+  background-color: rgb(243, 228, 228);
+}
+
+.navBar{
+  width: 2em;
 }

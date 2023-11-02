@@ -125,7 +125,7 @@ END
 
 CREATE PROCEDURE sp_CambiarContrasena
     @pContraseña varchar(50),
-	@pEmailvarchar(50)
+	@pEmail varchar(50)
 AS
 BEGIN
 	UPDATE Dueno SET Contraseña = @pContraseña WHERE Email = @pEmail

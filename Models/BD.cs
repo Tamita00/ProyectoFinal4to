@@ -38,7 +38,7 @@ public class BD{
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
             string sql = "sp_CrearVacuna pTipo, pFechaDosis, pFechaCaducidad";
-            db.Execute(sql, new {pIdMascota = IdMascota, pLugar = Lugar, pFecha = Fecha});
+            db.Execute(sql, new {pTipo = Tipo, pFechaCaducidad = FechaCaducidad, pFechDosis = FechDosis});
 
         }   
     }
@@ -59,16 +59,16 @@ public class BD{
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
             string sql = "sp_MostrarMascotas pIdDueno";
-            return = db.Query<Mascota>(sql, new { pIdDueno = IdDueno}).ToList();
+            return db.Query<Mascota>(sql, new { pIdDueno = IdDueno}).ToList();
         }
     }
 
-    public static List</*QUE DEVUELVO?*/> MostrarDatosPersonales(int IdMascota){
+    public static List<MascotaDueno> MostrarDatosPersonales(int IdMascota){
         
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
             string sql = "sp_MostrarDatosPersonales pIdMascota";
-            return = db.Query</*QUE DEVUELVO?*/>(sql, new { pIdMascota = IdMascota}).ToList();
+            return db.Query<MascotaDueno>(sql, new { pIdMascota = IdMascota}).ToList();
         }
     }
 
@@ -77,7 +77,7 @@ public class BD{
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
             string sql = "sp_MostrarAntecedentes pIdMascota";
-            return = db.Query<Antecedente>(sql, new { pIdMascota = IdMascota}).ToList();
+            return db.Query<Antecedente>(sql, new { pIdMascota = IdMascota}).ToList();
         }
     }
 
@@ -86,7 +86,7 @@ public class BD{
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
             string sql = "sp_MostrarVacunas pIdMascota";
-            return = db.Query<Antecedente>(sql, new { pIdMascota = IdMascota}).ToList();
+            return db.Query<Vacuna>(sql, new { pIdMascota = IdMascota}).ToList();
         }
     }
 
@@ -95,7 +95,7 @@ public class BD{
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
             string sql = "sp_MostrarVacunaEspecifica pIdMascota pIdVacuna";
-            return = db.Query<Antecedente>(sql, new { pIdMascota = IdMascota, pIdVacuna = IdVacuna}).ToList();
+            return db.Query<Vacuna>(sql, new { pIdMascota = IdMascota, pIdVacuna = IdVacuna}).ToList();
         }
     }
 

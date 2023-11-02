@@ -4,9 +4,15 @@ namespace ProyectoFinal4to.Controllers;
 
 public class HomeController : Controller
 {
-    public IActionResult Index()
+
+    public IActionResult C_Registrarse()
     {
-        return View();
+        return View("Registrarse");
+    }
+
+    public IActionResult C_RegistrarseMascota()
+    {
+        return View("RegistrarseMascota");
     }
 
     public IActionResult Index()

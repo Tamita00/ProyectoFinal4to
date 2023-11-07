@@ -62,14 +62,13 @@ public class BD{
             return db.Query<Mascota>(sql, new { pIdDueno = IdDueno}).ToList();
         }
     }
-    //MOSTRAR DUENO CON SP con select max
 
-    public static Mascota MostrarDueno(int IdDueno){
+    public static int MostrarIDDueno(){
         
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
-            string sql = "SELECT * FROM Dueno";
-            return db.Query<Mascota>(sql, new { pIdDueno = IdDueno}).ToList();
+            string sql = "sp_MostrarIdDueno";
+            return db.QueryFirstOrDifult<int>(sql);
         }
     }
 

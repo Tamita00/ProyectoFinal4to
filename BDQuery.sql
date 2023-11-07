@@ -71,6 +71,18 @@ BEGIN
 	SELECT IdMascota, Nombre, Foto FROM Mascota WHERE IdDueno = @pIdDueno
 END
 
+CREATE PROCEDURE sp_MostrarIdDueno
+AS
+BEGIN
+	SELECT SCOPE_IDENTITY() FROM Dueno
+END
+
+CREATE PROCEDURE sp_MostrarIdMascota
+AS
+BEGIN
+	SELECT SCOPE_IDENTITY() FROM Mascota
+END
+
 
 CREATE PROCEDURE sp_MostrarNotas
     @pIdMascota int,

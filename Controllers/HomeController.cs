@@ -25,13 +25,13 @@ public class HomeController : Controller
 
     public IActionResult C_AgregarDueno(string nombre, int dni, string email, string contrasena)
     {
-        BD.AgregarDueno(contrasena, dni, nombre, email)
+        BD.AgregarDueno(contrasena, dni, nombre, email);
+        ViewBag.IdDueno = BD.MostrarIDDueno();
         return View("RegistrarseMascota");
     }
 
-    public IActionResult C_AgregarMascota()
+    public IActionResult C_AgregarMascota(int IdDueno, string Tipo, string Genero, string nombre, string raza, DateTime fechaNacimiento, IFormFile foto)
     {
-        BD.AgregarMascota(string nombre, int dni, string email, IFormFile foto)
 
         if(foto.Length > 0){
             string wwwRootLocal = this.Enviroment.ContentRootPath + @"\wwwroot\" + foto.FileName;
@@ -40,7 +40,9 @@ public class HomeController : Controller
             }
         }
 
-        return View("RegistrarseMascota");
+        BD.AgregarMascota(IdDueno, Tipo, Genero, nombre, raza, fechaNacimiento, foto);
+
+        return View();
     }
 
     public IActionResult C_CrearAntecedente()

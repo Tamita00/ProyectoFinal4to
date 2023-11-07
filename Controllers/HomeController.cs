@@ -1,10 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace ProyectoFinal4to.Controllers;
 
 public class HomeController : Controller
 {
+    private IWebHostEnviroment Enviroment;
 
+    public HomeController(IWebHostEnviroment enviroment){
+        Enviroment = enviroment;
+    }
     public IActionResult Index()
     {
         return View();
@@ -17,8 +23,23 @@ public class HomeController : Controller
         return View("Registrarse");
     }
 
-    public IActionResult C_RegistrarseMascota()
+    public IActionResult C_AgregarDueno(string nombre, int dni, string email, string contrasena)
     {
+        BD.AgregarDueno(contrasena, dni, nombre, email)
+        return View("RegistrarseMascota");
+    }
+
+    public IActionResult C_AgregarMascota()
+    {
+        BD.AgregarMascota(string nombre, int dni, string email, IFormFile foto)
+
+        if(foto.Length > 0){
+            string wwwRootLocal = this.Enviroment.ContentRootPath + @"\wwwroot\" + foto.FileName;
+            using(var stream = System.IO.File.Create(wwwRootLocal)){
+                foto.CopyToAsync(stream);
+            }
+        }
+
         return View("RegistrarseMascota");
     }
 

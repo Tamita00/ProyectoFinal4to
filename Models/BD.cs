@@ -1,8 +1,9 @@
 using System.Data.SqlClient;
+using System.Data;
 using Dapper;
-namespace TPBase;
+namespace ProyectoFinal4to;
 
-public class BD{
+public static class BD{
     private static string ConnectionString = @"Server=localhost;DataBase=MiMascota;Trusted_Connection=True;";
 
     //.....Agregar
@@ -10,8 +11,8 @@ public class BD{
     public static void AgregarDueno(string Contraseña, int DNI, string Nombre, string Email){
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
-            string sql = "sp_CrearDueno pContraseña, pDNI, pNombre, pEmail";
-            db.Execute(sql, new { pContraseña = Contraseña, pDNI = DNI, pNombre = Nombre, pEmail = Email});
+            string sql = "sp_CrearDueno";
+            db.Execute(sql, new { pContraseña = Contraseña, pDNI = DNI, pNombre = Nombre, pEmail = Email}, commandType: CommandType.StoredProcedure);
 
         }   
     }
@@ -68,7 +69,7 @@ public class BD{
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
             string sql = "sp_MostrarIdDueno";
-            return db.QueryFirstOrDifult<int>(sql);
+            return db.QueryFirstOrDefault<int>(sql);
         }
     }
 

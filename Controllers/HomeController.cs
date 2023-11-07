@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
-
+using ProyectoFinal4to.Models;
 namespace ProyectoFinal4to.Controllers;
 
 public class HomeController : Controller
 {
-    private IWebHostEnviroment Enviroment;
+    private IWebHostEnvironment Enviroment;
 
-    public HomeController(IWebHostEnviroment enviroment){
+    public HomeController(IWebHostEnvironment enviroment){
         Enviroment = enviroment;
     }
     public IActionResult Index()
@@ -40,7 +40,7 @@ public class HomeController : Controller
             }
         }
 
-        BD.AgregarMascota(IdDueno, Tipo, Genero, nombre, raza, fechaNacimiento, foto);
+        BD.AgregarMascota(IdDueno, Tipo, Genero, nombre, raza, fechaNacimiento, foto.FileName);
 
         return View();
     }

@@ -25,6 +25,7 @@ AS
 BEGIN
 	INSERT INTO Dueno(Contraseña, DNI, Nombre, Email)
 	VALUES (@pContraseña, @pDNI, @pNombre, @pEmail)
+	
 END
 
 
@@ -74,7 +75,7 @@ END
 CREATE PROCEDURE sp_MostrarIdDueno
 AS
 BEGIN
-	SELECT SCOPE_IDENTITY() FROM Dueno
+	SELECT top(1) Id FROM Dueno Order By Id Desc
 END
 
 CREATE PROCEDURE sp_MostrarIdMascota

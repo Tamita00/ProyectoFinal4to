@@ -42,7 +42,7 @@ public class HomeController : Controller
 
         BD.AgregarMascota(IdDueno, Tipo, Genero, nombre, raza, fechaNacimiento, foto.FileName);
 
-        return View();
+        return View("Index");
     }
 
     public IActionResult C_CrearAntecedente()
@@ -64,12 +64,29 @@ public class HomeController : Controller
     
     public IActionResult C_IniciarSesion()
     {
+
         return View("IniciarSesion");
+    }
+
+    public IActionResult C_ValidarCuenta(string email, string contrasena)
+    {
+        if(BD.MostrarDueno(email, contrasena) == null) return View("IniciarSesion");
+        else{
+            ViewBag.MostrarInfo = BD.MostrarDueno(email, contrasena);
+            return View("ElegirMascota");
+        } 
     }
     
     public IActionResult C_OlvideContrasena()
     {
         return View("OlvideContrasena");
+    }
+
+    public IActionResult C_CambiarContrasena(string email, string contrasena)
+    {
+        BD.CambiarContra(email, contrasena);
+
+        return View("IniciarSesion");
     }
     
     public IActionResult C_ElegirMascota()

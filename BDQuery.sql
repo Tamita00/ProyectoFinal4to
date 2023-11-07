@@ -72,7 +72,15 @@ BEGIN
 	SELECT IdMascota, Nombre, Foto FROM Mascota WHERE IdDueno = @pIdDueno
 END
 
-CREATE PROCEDURE sp_MostrarIdDueno
+CREATE PROCEDURE sp_MostrarDueno
+    @pIdDueno int,
+	@pContrasena varchar(50)
+AS
+BEGIN
+	SELECT * FROM Dueno WHERE Id = @pIdDueno AND Contraseña = @pContrasena
+END
+
+ALTER PROCEDURE sp_MostrarIdDueno
 AS
 BEGIN
 	SELECT top(1) Id FROM Dueno Order By Id Desc

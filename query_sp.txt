@@ -17,14 +17,14 @@ END
 
 
 CREATE PROCEDURE sp_CrearDueno
-    @pContraseña varchar(50),
+    @pContraseÃ±a varchar(50),
 	@pDNI int,
 	@pNombre varchar(50),
 	@pEmail varchar(50)
 AS
 BEGIN
-	INSERT INTO Dueno(Contraseña, DNI, Nombre, Email)
-	VALUES (@pContraseña, @pDNI, @pNombre, @pEmail)
+	INSERT INTO Dueno(ContraseÃ±a, DNI, Nombre, Email)
+	VALUES (@pContraseÃ±a, @pDNI, @pNombre, @pEmail)
 	
 END
 
@@ -77,7 +77,7 @@ CREATE PROCEDURE sp_MostrarDueno
 	@pContrasena varchar(50)
 AS
 BEGIN
-	SELECT * FROM Dueno WHERE Email = @pEmail AND Contraseña = @pContrasena
+	SELECT * FROM Dueno WHERE Email = @pEmail AND ContraseÃ±a = @pContrasena
 END
 
 ALTER PROCEDURE sp_MostrarIdDueno
@@ -145,11 +145,11 @@ END
 --CAMBIAR--
 
 CREATE PROCEDURE sp_CambiarContrasena
-    @pContraseña varchar(50),
+    @pContraseÃ±a varchar(50),
 	@pEmail varchar(50)
 AS
 BEGIN
-	UPDATE Dueno SET Contraseña = @pContraseña WHERE Email = @pEmail
+	UPDATE Dueno SET ContraseÃ±a = @pContraseÃ±a WHERE Email = @pEmail
 END
 
 

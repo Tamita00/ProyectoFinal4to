@@ -73,7 +73,7 @@ public static class BD{
         }
     }
 
-    public static int MostrarIDDueno(){
+    public static int MostrarIdDueno(){
         
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
@@ -82,12 +82,21 @@ public static class BD{
         }
     }
 
-    public static List<MascotaDueno> MostrarDatosPersonales(int IdMascota){
+    public static int MostrarIdMascota(){
+        
+        using (SqlConnection db = new SqlConnection(ConnectionString))
+        {
+            string sql = "sp_MostrarIdMascota";
+            return db.QueryFirstOrDefault<int>(sql);
+        }
+    }
+
+    public static MascotaDueno MostrarDatosPersonales(int IdMascota){
         
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
             string sql = "sp_MostrarDatosPersonales";
-            return db.Query<MascotaDueno>(sql, new { pIdMascota = IdMascota}, commandType: CommandType.StoredProcedure).ToList();
+            return db.QueryFirstOrDefault<MascotaDueno>(sql, new { pIdMascota = IdMascota}, commandType: CommandType.StoredProcedure);
         }
     }
 

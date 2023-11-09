@@ -26,7 +26,7 @@ public class HomeController : Controller
     public IActionResult C_AgregarDueno(string nombre, int dni, string email, string contrasena)
     {
         BD.AgregarDueno(contrasena, dni, nombre, email);
-        ViewBag.IdDueno = BD.MostrarIDDueno();
+        ViewBag.IdDueno = BD.MostrarIdDueno();
         return View("RegistrarseMascota");
     }
 
@@ -41,11 +41,20 @@ public class HomeController : Controller
         }
 
         BD.AgregarMascota(IdDueno, Tipo, Genero, nombre, raza, fechaNacimiento, foto.FileName);
+        
+        ViewBag.DatosPersonales = BD.MostrarDatosPersonales(BD.MostrarIdMascota());
 
-        return View("Index");
+        return View("CrearAntecedenteVacuna");
     }
 
-    public IActionResult C_CrearAntecedente()
+    public IActionResult C_CrearAntecedenteVacuna()
+    {
+        ViewBag.DatosPersonales = BD.MostrarDatosPersonales(BD.MostrarIdMascota());
+        ViewBag.IdMascota = BD.MostrarIdMascota();
+        return View("CrearAntecedente");
+    }
+
+    public IActionResult C_AgregarAntecedente(string Tipo, string Lugar, DateTime Fecha)
     {
         return View("CrearAntecedente");
     }

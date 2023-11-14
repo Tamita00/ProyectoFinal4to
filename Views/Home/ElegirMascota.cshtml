@@ -16,10 +16,21 @@
             <img class="sinLoguear" src="img/icono.png"><br>
             <form method = "post" action= '@Url.Action("C_ElegirMascota")'>
             <div class="mascotas">
+<<<<<<< HEAD
             <img class="mascotas_img" name = perro1 src="img/perro1.webp"><br>
             <img class="mascotas_img" name = perro 2 src="img/perro2.webp"><br>
             <img class="mascotas_img" name = perro 3src="img/perro3.jpg"><br>
             <img class="mascotas_img" name = perrosrc="img/perro4.png"><br>
+=======
+
+            @foreach (Pais pais in ViewBag.listaPaises)
+            {
+                <a href='@Url.Action("DetallePais", new {nombrePais = pais.nombre})'>
+                    <img src = "/Img/@pais.imgBandera" alt ="Foto bandera" width = "300px">  
+                </a>
+            }
+            
+>>>>>>> bba0cbcec766350d119d64425af58b56500b3214
             </div>
             <a class="botonPrimario" href='@Url.Action("C_Home")' role="button">Siguiente</a><br>
 

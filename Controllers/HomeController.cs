@@ -26,7 +26,7 @@ public class HomeController : Controller
     public IActionResult C_AgregarDueno(string nombre, int dni, string email, string contrasena)
     {
         BD.AgregarDueno(contrasena, dni, nombre, email);
-        ViewBag.IdDueno = BD.MostrarIDDueno();
+        ViewBag.IdDueno = BD.MostrarIdDueno();
         return View("RegistrarseMascota");
     }
 
@@ -34,17 +34,20 @@ public class HomeController : Controller
     {
 
         if(foto.Length > 0){
-            string wwwRootLocal = this.Enviroment.ContentRootPath + @"\wwwroot\" + foto.FileName;
+            string wwwRootLocal = this.Enviroment.ContentRootPath + @"\wwwroot\img\" + foto.FileName;
             using(var stream = System.IO.File.Create(wwwRootLocal)){
                 foto.CopyToAsync(stream);
             }
         }
 
         BD.AgregarMascota(IdDueno, Tipo, Genero, nombre, raza, fechaNacimiento, foto.FileName);
+        
+        ViewBag.DatosPersonales = BD.MostrarDatosPersonales(BD.MostrarIdMascota());
 
-        return View();
+        return View("CrearAntecedenteVacuna");
     }
 
+<<<<<<< HEAD
     public IActionResult C_AgregarAntecedente(int IdMascota,string Lugar, DateTime Fecha, string Info)
     {
         BD.AgregarAntecedentes(IdMascota,lugar,fecha,info); 
@@ -55,6 +58,27 @@ public class HomeController : Controller
     {
         BD.AgregarVacunas(tipo, fachdosis, fechaCaducidad); 
         return View("CrearVacuna");
+=======
+    public IActionResult C_CrearAntecedenteVacuna()
+    {
+        ViewBag.DatosPersonales = BD.MostrarDatosPersonales(BD.MostrarIdMascota());
+        ViewBag.IdMascota = BD.MostrarIdMascota();
+        return View("CrearAntecedente");
+    }
+
+    public IActionResult C_AgregarAntecedente(int IdMascota, string Tipo, string Lugar, DateTime Fecha)
+    {
+        BD.AgregarAntecedentes(IdMascota, Lugar, Fecha, Tipo);
+        ViewBag.IdMascota = BD.MostrarIdMascota();
+        return View("CrearAntecedenteVacuna");
+    }
+
+    public IActionResult C_CrearVacuna(int IdMascota, string Tipo, DateTime fecha1, DateTime fecha10, DateTime fecha2, DateTime fecha20, DateTime fecha3, DateTime fecha30)
+    {
+        BD.AgregarVacunas(IdMascota, Tipo, fecha1, fecha10, fecha2, fecha20, fecha3, fecha30);
+        ViewBag.IdMascota = BD.MostrarIdMascota();
+        return View("CrearAntecedenteVacuna");
+>>>>>>> bba0cbcec766350d119d64425af58b56500b3214
     }
     public IActionResult C_CrearNota()
     {
@@ -69,14 +93,31 @@ public class HomeController : Controller
 
         return View("IniciarSesion");
     }
+
+    public IActionResult C_ValidarCuenta(string email, string contrasena)
+    {
+        if(BD.MostrarDueno(email, contrasena) == null) return View("IniciarSesion");
+        else{
+            ViewBag.MostrarInfo = BD.MostrarDueno(email, contrasena);
+            return View("ElegirMascota");
+        } 
+    }
     
     public IActionResult C_OlvideContrasena()
     {
         return View("OlvideContrasena");
     }
-    
-    public IActionResult C_ElegirMascota()
+
+    public IActionResult C_CambiarContrasena(string email, string contrasena)
     {
+        BD.CambiarContra(email, contrasena);
+
+        return View("IniciarSesion");
+    }
+    
+    public IActionResult C_ElegirMascota(int IdDueno)
+    {
+        ViewBag.Mascotas = BD.MostrarMascotas(IdDueno)
         return View("ElegirMascota");
     }
     

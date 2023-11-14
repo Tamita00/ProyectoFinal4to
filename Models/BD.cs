@@ -20,8 +20,8 @@ public static class BD{
     public static void AgregarMascota(int IdDueno, string TipoMascota, string Genero, string Nombre, string Raza, DateTime FechaNacimiento, string Foto ){
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
-            string sql = "sp_CrearMascota pIdDueno, pTipoMascota, pGenero, pNombre, pRaza, pFechaNacimiento, pFoto";
-            db.Execute(sql, new {pIdDueno = IdDueno, pTipoMascota = TipoMascota, pGenero = Genero, pNombre = Nombre, pRaza = Raza, pFechaNacimiento = FechaNacimiento, pFoto = Foto});
+            string sql = "sp_CrearMascota";
+            db.Execute(sql, new {pIdDueno = IdDueno, pTipoMascota = TipoMascota, pGenero = Genero, pNombre = Nombre, pRaza = Raza, pFechaNacimiento = FechaNacimiento, pFoto = Foto}, commandType: CommandType.StoredProcedure);
 
         }   
     }
@@ -29,17 +29,17 @@ public static class BD{
     public static void AgregarAntecedentes(int IdMascota,string Lugar, DateTime Fecha, string Info){
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
-            string sql = "sp_CrearAntecedente pIdMascota, pLugar, pFecha, pInfo";
-            db.Execute(sql, new {pIdMascota = IdMascota, pLugar = Lugar, pFecha = Fecha, pInfo = Info});
+            string sql = "sp_CrearAntecedente";
+            db.Execute(sql, new {pIdMascota = IdMascota, pLugar = Lugar, pFecha = Fecha, pInfo = Info}, commandType: CommandType.StoredProcedure);
 
         }   
     }
 
-    public static void AgregarVacunas(string Tipo, DateTime FechDosis, DateTime FechaCaducidad){
+    public static void AgregarVacunas(int IdMascota, string Tipo, DateTime FechDosis1, DateTime FechaCaducidad1, DateTime FechDosis2, DateTime FechaCaducidad2, DateTime FechDosis3, DateTime FechaCaducidad3){
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
-            string sql = "sp_CrearVacuna pTipo, pFechaDosis, pFechaCaducidad";
-            db.Execute(sql, new {pTipo = Tipo, pFechaCaducidad = FechaCaducidad, pFechDosis = FechDosis});
+            string sql = "sp_CrearVacuna";
+            db.Execute(sql, new {pTipo = Tipo, pFechaCaducidad1 = FechaCaducidad1, pFechDosis1 = FechDosis1, pFechDosis2 = FechDosis2, pFechaCaducidad2 = FechaCaducidad2, pFechDosis3 = FechDosis3, pFechaCaducidad3 = FechaCaducidad3}, commandType: CommandType.StoredProcedure);
 
         }   
     }
@@ -47,8 +47,8 @@ public static class BD{
     public static void AgregarNota(string Lugar, DateTime Fecha, string Info){
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
-            string sql = "sp_CrearNota pLugar, pInfo, pFecha";
-            db.Execute(sql, new {pLugar = Lugar, pInfo = Info, pFecha = Fecha});
+            string sql = "sp_CrearNota";
+            db.Execute(sql, new {pLugar = Lugar, pInfo = Info, pFecha = Fecha}, commandType: CommandType.StoredProcedure);
 
         }   
     }
@@ -59,12 +59,21 @@ public static class BD{
         
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
-            string sql = "sp_MostrarMascotas pIdDueno";
-            return db.Query<Mascota>(sql, new { pIdDueno = IdDueno}).ToList();
+            string sql = "sp_MostrarMascotas";
+            return db.Query<Mascota>(sql, new { pIdDueno = IdDueno}, commandType: CommandType.StoredProcedure).ToList();
         }
     }
 
-    public static int MostrarIDDueno(){
+    public static List<Dueno> MostrarDueno(string email, string contrasena){
+        
+        using (SqlConnection db = new SqlConnection(ConnectionString))
+        {
+            string sql = "sp_MostrarDueno";
+            return db.Query<Dueno>(sql, new { pEmail = email, pContrasena = contrasena}, commandType: CommandType.StoredProcedure).ToList();
+        }
+    }
+
+    public static int MostrarIdDueno(){
         
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
@@ -73,12 +82,21 @@ public static class BD{
         }
     }
 
-    public static List<MascotaDueno> MostrarDatosPersonales(int IdMascota){
+    public static int MostrarIdMascota(){
         
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
-            string sql = "sp_MostrarDatosPersonales pIdMascota";
-            return db.Query<MascotaDueno>(sql, new { pIdMascota = IdMascota}).ToList();
+            string sql = "sp_MostrarIdMascota";
+            return db.QueryFirstOrDefault<int>(sql);
+        }
+    }
+
+    public static MascotaDueno MostrarDatosPersonales(int IdMascota){
+        
+        using (SqlConnection db = new SqlConnection(ConnectionString))
+        {
+            string sql = "sp_MostrarDatosPersonales";
+            return db.QueryFirstOrDefault<MascotaDueno>(sql, new { pIdMascota = IdMascota}, commandType: CommandType.StoredProcedure);
         }
     }
 
@@ -86,8 +104,8 @@ public static class BD{
         
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
-            string sql = "sp_MostrarAntecedentes pIdMascota";
-            return db.Query<Antecedente>(sql, new { pIdMascota = IdMascota}).ToList();
+            string sql = "sp_MostrarAntecedentes";
+            return db.Query<Antecedente>(sql, new { pIdMascota = IdMascota}, commandType: CommandType.StoredProcedure).ToList();
         }
     }
 
@@ -95,8 +113,8 @@ public static class BD{
         
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
-            string sql = "sp_MostrarVacunas pIdMascota";
-            return db.Query<Vacuna>(sql, new { pIdMascota = IdMascota}).ToList();
+            string sql = "sp_MostrarVacunas";
+            return db.Query<Vacuna>(sql, new { pIdMascota = IdMascota}, commandType: CommandType.StoredProcedure).ToList();
         }
     }
 
@@ -104,8 +122,8 @@ public static class BD{
         
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
-            string sql = "sp_MostrarVacunaEspecifica pIdMascota pIdVacuna";
-            return db.Query<Vacuna>(sql, new { pIdMascota = IdMascota, pIdVacuna = IdVacuna}).ToList();
+            string sql = "sp_MostrarVacunaEspecifica";
+            return db.Query<Vacuna>(sql, new { pIdMascota = IdMascota, pIdVacuna = IdVacuna}, commandType: CommandType.StoredProcedure).ToList();
         }
     }
 
@@ -113,8 +131,8 @@ public static class BD{
     public static void CambiarContra(string Email, string Contraseña){
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
-            string sql = "sp_CambiarContrasena pEmail pContraseña";
-            db.Execute(sql, new { pEmail = Email, pContraseña = Contraseña});
+            string sql = "sp_CambiarContrasena";
+            db.Execute(sql, new { pEmail = Email, pContraseña = Contraseña}, commandType: CommandType.StoredProcedure);
         }    
     }
 

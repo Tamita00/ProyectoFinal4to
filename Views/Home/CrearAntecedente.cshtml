@@ -14,12 +14,10 @@
     <div class="contenedor">
         <div class="input">
             <img class="registrarse" src="img/personaCaminando_Registro.png"><br>
-
-
-            <input class="largo" type="text" placeholder="Tipo"> <br>
-            <input class="largo" type="text" placeholder="Lugar"><br>
-            <input class="largo" type="date" placeholder="Fecha"><br><br>
-        
+            <form method = "post" action= '@Url.Action("C_AgregarAntecedente")'>
+            <input class="largo"  name= tipo type="text" placeholder="Tipo"> <br>
+            <input class="largo"  name = lugar type="text" placeholder="Lugar"><br>
+            <input class="largo" name = fecha type="date" placeholder="Fecha"><br><br>
             <a class="botonPrimario" href='@Url.Action("C_RegistrarseMascota")' role="button">Listo</a>
 
         </div>

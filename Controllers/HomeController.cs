@@ -45,25 +45,28 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult C_CrearAntecedente()
+    public IActionResult C_AgregarAntecedente(int IdMascota,string Lugar, DateTime Fecha, string Info)
     {
+        BD.AgregarAntecedentes(IdMascota,lugar,fecha,info); 
         return View("CrearAntecedente");
     }
 
-    public IActionResult C_CrearVacuna()
+    public IActionResult C_AgregarVacunas(string Tipo, DateTime FechDosis, DateTime FechaCaducidad)
     {
+        BD.AgregarVacunas(tipo, fachdosis, fechaCaducidad); 
         return View("CrearVacuna");
     }
-    
     public IActionResult C_CrearNota()
     {
         return View("CrearNota");
     }
 
+
     /*INICIAR SESION*/
     
     public IActionResult C_IniciarSesion()
     {
+
         return View("IniciarSesion");
     }
     

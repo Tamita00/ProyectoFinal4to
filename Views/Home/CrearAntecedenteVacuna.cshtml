@@ -16,7 +16,7 @@
             <img class="registrarse" src="img/PerroCorriendo_Registro.jpg"><br>
 
 
-            <form method="post" action = '@Url.Action("C_CrearAntecedenteVacuna")'>
+            <form method="post" action = '@Url.Action("Index")'>
             <input id="IdMascota" name="IdMascota" type="hidden" value="@ViewBag.IdMascota">
             
             <p>@ViewBag.DatosPersonales.Foto</p>
@@ -26,9 +26,12 @@
             <p>@ViewBag.DatosPersonales.Raza</p>
             <p>@ViewBag.DatosPersonales.FechaNacimeinto</p>
 
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalSerie">Cargar Antecedente</button>
-                        <!-- Modal -->
-            <div class="modal fade" id="ModalSerie" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalAntecedente">Cargar Antecedente</button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalVacuna">Cargar Vacuna</button>
+                        
+            <!-- Modal Antecedente -->
+
+            <div class="modal fade" id="ModalAntecedente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
@@ -40,6 +43,35 @@
                         <input class="largo" type="text" name = "nombre" placeholder="Tipo" required> 
                         <input class="largo" name = "text" type="lugar" placeholder="Lugar" required><br>
                         <input class="largo" type="date" name = "fecha" placeholder="Fecha" required><br><br>
+
+                        <input class="botonPrimario" type="submit" value="Guardar"><br><br><br>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+                </div>
+            </div>
+            </div>
+
+            <!-- Modal Vacuna  -->
+
+            <div class="modal fade" id="ModalVacuna" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="Titulo"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="Cuerpo">
+                     <form method="post" action = '@Url.Action("C_CrearVacuna")'>
+                        <input class="largo" type="text" name = "nombre" placeholder="Tipo" required> 
+                        <input class="largo" type="date" name = "fecha1" placeholder="Fecha 1ra Dosis" required><br>
+                        <input class="largo" type="date" name = "fecha10" placeholder="Fecha Caducacion 1ra Dosis" required><br>
+                        <input class="largo" type="date" name = "fecha2" placeholder="Fecha 2da Dosis" ><br>
+                        <input class="largo" type="date" name = "fecha20" placeholder="Fecha Caducacion 2da Dosis" ><br>
+                        <input class="largo" type="date" name = "fecha3" placeholder="Fecha 3ra Dosis" ><br>
+                        <input class="largo" type="date" name = "fecha30" placeholder="Fecha Caducacion 3ra Dosis" ><br><br>
 
                         <input class="botonPrimario" type="submit" value="Guardar"><br><br><br>
                     </form>

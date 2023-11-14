@@ -34,7 +34,7 @@ public class HomeController : Controller
     {
 
         if(foto.Length > 0){
-            string wwwRootLocal = this.Enviroment.ContentRootPath + @"\wwwroot\" + foto.FileName;
+            string wwwRootLocal = this.Enviroment.ContentRootPath + @"\wwwroot\img\" + foto.FileName;
             using(var stream = System.IO.File.Create(wwwRootLocal)){
                 foto.CopyToAsync(stream);
             }
@@ -57,12 +57,15 @@ public class HomeController : Controller
     public IActionResult C_AgregarAntecedente(int IdMascota, string Tipo, string Lugar, DateTime Fecha)
     {
         BD.AgregarAntecedentes(IdMascota, Lugar, Fecha, Tipo);
-        return RedirectToAction("C_AgregarMascota");
+        ViewBag.IdMascota = BD.MostrarIdMascota();
+        return View("CrearAntecedenteVacuna");
     }
 
-    public IActionResult C_CrearVacuna()
+    public IActionResult C_CrearVacuna(int IdMascota, string Tipo, DateTime fecha1, DateTime fecha10, DateTime fecha2, DateTime fecha20, DateTime fecha3, DateTime fecha30)
     {
-        return View("CrearVacuna");
+        BD.AgregarVacunas(IdMascota, Tipo, fecha1, fecha10, fecha2, fecha20, fecha3, fecha30);
+        ViewBag.IdMascota = BD.MostrarIdMascota();
+        return View("CrearAntecedenteVacuna");
     }
     
     public IActionResult C_CrearNota()
@@ -99,8 +102,9 @@ public class HomeController : Controller
         return View("IniciarSesion");
     }
     
-    public IActionResult C_ElegirMascota()
+    public IActionResult C_ElegirMascota(int IdDueno)
     {
+        ViewBag.Mascotas = BD.MostrarMascotas(IdDueno)
         return View("ElegirMascota");
     }
     

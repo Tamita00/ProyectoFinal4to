@@ -72,6 +72,14 @@ BEGIN
 	SELECT IdMascota, Nombre, Foto FROM Mascota WHERE IdDueno = @pIdDueno
 END
 
+
+CREATE PROCEDURE sp_MostrarMascota
+    @pIdMascota int
+AS
+BEGIN
+	SELECT * FROM Mascota WHERE IdMascota = @pIdMascota
+END
+
 CREATE PROCEDURE sp_MostrarDueno
     @pEmail varchar(50),
 	@pContrasena varchar(50)

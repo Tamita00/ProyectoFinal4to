@@ -18,10 +18,10 @@
 
             <div class="mascotas">
 
-            @foreach (Pais pais in ViewBag.listaPaises)
+            @foreach (Mascota mascota in ViewBag.Mascotas)
             {
-                <a href='@Url.Action("DetallePais", new {nombrePais = pais.nombre})'>
-                    <img src = "/Img/@pais.imgBandera" alt ="Foto bandera" width = "300px">  
+                <a href='@Url.Action("C_Inicio", new {IdMascota = @mascota.IdMascota})'>
+                    <img src = "/Img/@mascota.Foto" alt ="Foto mascota" width = "300px">  
                 </a>
             }
             

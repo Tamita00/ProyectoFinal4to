@@ -85,7 +85,8 @@ public class HomeController : Controller
     {
         if(BD.MostrarDueno(email, contrasena) == null) return View("IniciarSesion");
         else{
-            ViewBag.MostrarInfo = BD.MostrarDueno(email, contrasena);
+            Dueno Dueno = BD.MostrarDueno(email,contrasena);
+            ViewBag.Mascotas = BD.MostrarMascotas(Dueno.IdDueno);
             return View("ElegirMascota");
         } 
     }
@@ -102,14 +103,29 @@ public class HomeController : Controller
         return View("IniciarSesion");
     }
     
-    public IActionResult C_ElegirMascota(int IdDueno)
+
+/*INICIO*/
+
+
+    public IActionResult C_Inicio(int IdMascota)
     {
-        ViewBag.Mascotas = BD.MostrarMascotas(IdDueno)
-        return View("ElegirMascota");
+        ViewBag.Mascota = BD.MostrarMascota(IdMascota);
+        return View("Inicio");
+    }
+
+    public IActionResult C_Antecedente(int IdMascota)
+    {
+        
+        return View("Antecedente");
     }
     
-    public IActionResult C_Home()
+    public IActionResult C_Vacunas(int IdMascota)
     {
-        return View("Home");
+        return View("Vacunas");
     }
+    
+    public IActionResult C_DatosPersonales(int IdMascota)
+    {
+        return View("DatosPersonales");
+    }    
 }

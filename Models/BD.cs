@@ -64,12 +64,21 @@ public static class BD{
         }
     }
 
-    public static List<Dueno> MostrarDueno(string email, string contrasena){
+    public static Mascota MostrarMascota(int IdMascota){
+        
+        using (SqlConnection db = new SqlConnection(ConnectionString))
+        {
+            string sql = "sp_MostrarMascota";
+            return db.QueryFirstOrDefault<Mascota>(sql, new { pIdMascota = IdMascota}, commandType: CommandType.StoredProcedure);
+        }
+    }
+
+    public static Dueno MostrarDueno(string email, string contrasena){
         
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
             string sql = "sp_MostrarDueno";
-            return db.Query<Dueno>(sql, new { pEmail = email, pContrasena = contrasena}, commandType: CommandType.StoredProcedure).ToList();
+            return db.QueryFirstOrDefault<Dueno>(sql, new { pEmail = email, pContrasena = contrasena}, commandType: CommandType.StoredProcedure);
         }
     }
 

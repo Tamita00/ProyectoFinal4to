@@ -47,6 +47,18 @@ public class HomeController : Controller
         return View("CrearAntecedenteVacuna");
     }
 
+<<<<<<< HEAD
+    public IActionResult C_AgregarAntecedente(int IdMascota,string Lugar, DateTime Fecha, string Info)
+    {
+        BD.AgregarAntecedentes(IdMascota,lugar,fecha,info); 
+        return View("CrearAntecedente");
+    }
+
+    public IActionResult C_AgregarVacunas(string Tipo, DateTime FechDosis, DateTime FechaCaducidad)
+    {
+        BD.AgregarVacunas(tipo, fachdosis, fechaCaducidad); 
+        return View("CrearVacuna");
+=======
     public IActionResult C_CrearAntecedenteVacuna()
     {
         ViewBag.DatosPersonales = BD.MostrarDatosPersonales(BD.MostrarIdMascota());
@@ -66,12 +78,13 @@ public class HomeController : Controller
         BD.AgregarVacunas(IdMascota, Tipo, fecha1, fecha10, fecha2, fecha20, fecha3, fecha30);
         ViewBag.IdMascota = BD.MostrarIdMascota();
         return View("CrearAntecedenteVacuna");
+>>>>>>> bba0cbcec766350d119d64425af58b56500b3214
     }
-    
     public IActionResult C_CrearNota()
     {
         return View("CrearNota");
     }
+
 
     /*INICIAR SESION*/
     

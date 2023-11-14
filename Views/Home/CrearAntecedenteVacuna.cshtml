@@ -19,13 +19,37 @@
             <form method="post" action = '@Url.Action("C_CrearAntecedenteVacuna")'>
             <input id="IdMascota" name="IdMascota" type="hidden" value="@ViewBag.IdMascota">
             
+            <p>@ViewBag.DatosPersonales.Foto</p>
             <p>@ViewBag.DatosPersonales.Nombre</p>
             <p>@ViewBag.DatosPersonales.TipoMascota</p>
             <p>@ViewBag.DatosPersonales.Genero</p>
             <p>@ViewBag.DatosPersonales.Raza</p>
             <p>@ViewBag.DatosPersonales.FechaNacimeinto</p>
 
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalSerie">Cargar Antecedente</button>
+                        <!-- Modal -->
+            <div class="modal fade" id="ModalSerie" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="Titulo"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="Cuerpo">
+                     <form method="post" action = '@Url.Action("C_AgregarAntecedente")'>
+                        <input class="largo" type="text" name = "nombre" placeholder="Tipo" required> 
+                        <input class="largo" name = "text" type="lugar" placeholder="Lugar" required><br>
+                        <input class="largo" type="date" name = "fecha" placeholder="Fecha" required><br><br>
 
+                        <input class="botonPrimario" type="submit" value="Guardar"><br><br><br>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+                </div>
+            </div>
+            </div>
 
             <input class="botonPrimario" type="submit" value="Siguiente">
         </form>

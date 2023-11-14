@@ -73,14 +73,14 @@ BEGIN
 END
 
 CREATE PROCEDURE sp_MostrarDueno
-    @pEmail int,
+    @pEmail varchar(50),
 	@pContrasena varchar(50)
 AS
 BEGIN
 	SELECT * FROM Dueno WHERE Email = @pEmail AND Contraseña = @pContrasena
 END
 
-ALTER PROCEDURE sp_MostrarIdDueno
+CREATE PROCEDURE sp_MostrarIdDueno
 AS
 BEGIN
 	SELECT top(1) Id FROM Dueno Order By Id Desc
@@ -89,7 +89,7 @@ END
 CREATE PROCEDURE sp_MostrarIdMascota
 AS
 BEGIN
-	SELECT SCOPE_IDENTITY() FROM Mascota
+	SELECT top(1) IdMascota FROM Mascota Order By IdMascota Desc
 END
 
 

@@ -54,9 +54,10 @@ public class HomeController : Controller
         return View("CrearAntecedente");
     }
 
-    public IActionResult C_AgregarAntecedente(string Tipo, string Lugar, DateTime Fecha)
+    public IActionResult C_AgregarAntecedente(int IdMascota, string Tipo, string Lugar, DateTime Fecha)
     {
-        return View("CrearAntecedente");
+        BD.AgregarAntecedentes(IdMascota, Lugar, Fecha, Tipo);
+        return RedirectToAction("C_AgregarMascota");
     }
 
     public IActionResult C_CrearVacuna()

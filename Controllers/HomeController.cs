@@ -43,20 +43,16 @@ public class HomeController : Controller
         BD.AgregarMascota(IdDueno, Tipo, Genero, nombre, raza, fechaNacimiento, foto.FileName);
         
         ViewBag.DatosPersonales = BD.MostrarDatosPersonales(BD.MostrarIdMascota());
-
+        ViewBag.IdMascota = BD.MostrarIdMascota();
         return View("CrearAntecedenteVacuna");
     }
 
-    public IActionResult C_CrearAntecedenteVacuna()
-    {
-        ViewBag.DatosPersonales = BD.MostrarDatosPersonales(BD.MostrarIdMascota());
-        ViewBag.IdMascota = BD.MostrarIdMascota();
-        return View("CrearAntecedente");
-    }
+[HttpPost]
 
-    public IActionResult C_AgregarAntecedente(int IdMascota, string Tipo, string Lugar, DateTime Fecha)
+    public IActionResult C_AgregarAntecedente(int IdMascota, string Lugar, DateTime Fecha, string Tipo)
     {
         BD.AgregarAntecedentes(IdMascota, Lugar, Fecha, Tipo);
+        ViewBag.DatosPersonales = BD.MostrarDatosPersonales(BD.MostrarIdMascota());
         ViewBag.IdMascota = BD.MostrarIdMascota();
         return View("CrearAntecedenteVacuna");
     }

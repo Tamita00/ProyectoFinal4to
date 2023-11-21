@@ -35,11 +35,11 @@ public static class BD{
         }   
     }
 
-    public static void AgregarVacunas(int IdMascota, string Tipo, DateTime FechDosis1, DateTime FechaCaducidad1, DateTime FechDosis2, DateTime FechaCaducidad2, DateTime FechDosis3, DateTime FechaCaducidad3){
+    public static void AgregarVacunas(int IdMascota, string Tipo, DateTime FechDosis1, DateTime FechaCaducidad1){
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
             string sql = "sp_CrearVacuna";
-            db.Execute(sql, new {pTipo = Tipo, pFechaCaducidad1 = FechaCaducidad1, pFechDosis1 = FechDosis1, pFechDosis2 = FechDosis2, pFechaCaducidad2 = FechaCaducidad2, pFechDosis3 = FechDosis3, pFechaCaducidad3 = FechaCaducidad3}, commandType: CommandType.StoredProcedure);
+            db.Execute(sql, new {pTipo = Tipo, pFechaDosis1 = FechaDosis1, pFechaCaducidad1 = FechaCaducidad1}, commandType: CommandType.StoredProcedure);
 
         }   
     }
@@ -136,6 +136,7 @@ public static class BD{
         }
     }
 
+
 //.....Cambiar
     public static void CambiarContra(string Email, string Contraseña){
         using (SqlConnection db = new SqlConnection(ConnectionString))
@@ -145,5 +146,15 @@ public static class BD{
         }    
     }
 
+
+//....Eliminar
+
+        public static void EliminarAntecedente(int IdAntecedente){
+        using (SqlConnection db = new SqlConnection(ConnectionString))
+        {
+            string sql = "sp_EliminarAntecedente";
+            db.Execute(sql, new {pIdAntecedente = IdAntecedente}, commandType: CommandType.StoredProcedure);
+        }
+    }
 
 }

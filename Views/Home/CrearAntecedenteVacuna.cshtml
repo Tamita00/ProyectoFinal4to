@@ -41,6 +41,7 @@
                 </div>
                 <div class="modal-body" id="Cuerpo">
                      <form method="post" action = '@Url.Action("C_AgregarAntecedente")'>
+                        <input name="pagina" type="hidden" value="CrearAntecedenteVacuna" />
                         <input id="IdMascota" name="IdMascota" type="hidden" value="@ViewBag.IdMascota">
                         <input class="largo" name = "Lugar" type="text" placeholder="Lugar" required><br>
                         <input class="largo" type="date" name = "Fecha" placeholder="Fecha" required><br>

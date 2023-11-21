@@ -41,28 +41,32 @@ public class HomeController : Controller
         }
 
         BD.AgregarMascota(IdDueno, Tipo, Genero, nombre, raza, fechaNacimiento, foto.FileName);
-        
-        ViewBag.DatosPersonales = BD.MostrarDatosPersonales(BD.MostrarIdMascota());
-        ViewBag.IdMascota = BD.MostrarIdMascota();
+        int IdMascota = BD.MostrarIdMascota();
+        ViewBag.DatosPersonales = BD.MostrarDatosPersonales(IdMascota);
+        ViewBag.IdMascota = IdMascota;
         return View("CrearAntecedenteVacuna");
     }
 
 [HttpPost]
 
-    public IActionResult C_AgregarAntecedente(int IdMascota, string Lugar, DateTime Fecha, string Tipo)
+    public IActionResult C_AgregarAntecedente(string pagina, int IdMascota, string Lugar, DateTime Fecha, string Tipo)
     {
         BD.AgregarAntecedentes(IdMascota, Lugar, Fecha, Tipo);
         ViewBag.DatosPersonales = BD.MostrarDatosPersonales(BD.MostrarIdMascota());
-        ViewBag.IdMascota = BD.MostrarIdMascota();
-        return View("CrearAntecedenteVacuna");
+        Mascota Mascota = BD.MostrarMascota(IdMascota);
+        ViewBag.Mascota = Mascota;
+        ViewBag.Antecedentes = BD.MostrarAntecedentes(Mascota.IdMascota);
+        return View(pagina);
     }
 
-    public IActionResult C_CrearVacuna(int IdMascota, string Tipo, DateTime fecha1, DateTime fecha10, DateTime fecha2, DateTime fecha20, DateTime fecha3, DateTime fecha30)
+
+    public IActionResult C_CrearVacuna(int IdMascota, string Tipo, DateTime fecha1, DateTime fecha10)
     {
-        BD.AgregarVacunas(IdMascota, Tipo, fecha1, fecha10, fecha2, fecha20, fecha3, fecha30);
+        BD.AgregarVacunas(IdMascota, Tipo, fecha1, fecha10);
         ViewBag.IdMascota = BD.MostrarIdMascota();
         return View("CrearAntecedenteVacuna");
     }
+    
     public IActionResult C_CrearNota()
     {
         return View("CrearNota");
@@ -79,10 +83,10 @@ public class HomeController : Controller
 
     public IActionResult C_ValidarCuenta(string email, string contrasena)
     {
-        if(BD.MostrarDueno(email, contrasena) == null) return View("IniciarSesion");
+        Dueno DuenoExiste= BD.MostrarDueno(email, contrasena);
+        if(DuenoExiste == null) return View("IniciarSesion");
         else{
-            Dueno Dueno = BD.MostrarDueno(email,contrasena);
-            ViewBag.Mascotas = BD.MostrarMascotas(Dueno.IdDueno);
+            ViewBag.Mascotas = BD.MostrarMascotas(DuenoExiste.IdDueno);
             return View("ElegirMascota");
         } 
     }
@@ -118,6 +122,7 @@ public class HomeController : Controller
     
     public IActionResult C_Vacunas(int IdMascota)
     {
+        ViewBag.Vacunas = BD.MostrarVacunas(IdMascota);
         return View("Vacunas");
     }
     
@@ -125,4 +130,16 @@ public class HomeController : Controller
     {
         return View("DatosPersonales");
     }    
+
+
+/*ANTECEDENTE*/
+
+        public IActionResult C_EliminarAntecedente(int IdAntecedente, int IdMascota)
+    { 
+        BD.EliminarAntecedente(IdAntecedente);
+        ViewBag.Antecedentes = BD.MostrarAntecedentes(IdMascota);
+        ViewBag.Mascota = BD.MostrarMascota(IdMascota);
+        return View("Antecedente");
+    }
+
 }

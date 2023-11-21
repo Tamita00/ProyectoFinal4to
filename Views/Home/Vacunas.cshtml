@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="Style.css" asp-append-version="true">
     <title>MiMascota</title>
 </head>
 
@@ -21,7 +21,7 @@
         </nav>
     </header>
 
-    @foreach (Vacuna Vacuna in ViewBag.Vacuna)
+    @foreach (Vacuna Vacuna in ViewBag.Vacunas)
         {
             <p>@Vacuna.Tipo</p>
             <p>Fin</p>
@@ -29,30 +29,35 @@
 
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalVacuna">Cargar Vacuna</button>
                         
-            <!-- Modal Antecedente -->
+            <!-- Modal Vacuna -->
 
-        <div class="modal fade" id="ModalVacuna" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="Titulo"></h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-            <div class="modal-body" id="Cuerpo">
-                <form method="post" action = '@Url.Action("C_AgregarAntecedente")'>
-                    <input class="largo" type="text" name = "nombre" placeholder="Tipo" required> 
-                    <input class="largo" name = "text" type="lugar" placeholder="Lugar" required><br>
-                    <input class="largo" type="date" name = "fecha" placeholder="Fecha" required><br><br>
+      
+            <div class="modal fade" id="ModalVacuna" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="Titulo"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="Cuerpo">
+                     <form method="post" action = '@Url.Action("C_CrearVacuna")'>
+                        <input id="IdMascota" name="IdMascota" type="hidden" value="@ViewBag.IdMascota">
+                        <input class="largo" type="text" name = "Tipo" placeholder="Tipo" required> 
+                        <input class="largo" type="date" name = "fecha1" placeholder="Fecha 1ra Dosis" required><br>
+                        <input class="largo" type="date" name = "fecha10" placeholder="Fecha Caducacion 1ra Dosis" required><br><br>
 
-                    <input class="botonPrimario" type="submit" value="Guardar"><br><br><br>
-                </form>
+                        <input class="botonPrimario" type="submit" value="Guardar"><br><br><br>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+                </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
             </div>
-            </div>
-        </div>
-        </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 
 </body>
 

@@ -5,26 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="Style.css" asp-append-version="true">
     <title>MiMascota</title>
 </head>
 
 <body>
     <header>
         <nav class = "MiMascota">
-            <a href='@Url.Action("C_Inicio", new {IdMascota = @ViewBag.Mascota.IdMascota})'><h2>MiMascota</h2></a>
+            <a href="Index.html"><h2>MiMascota</h2></a>
+        
         
             <a href="html.html"><img class="navBar" src="img/calendar.png"></a>
             <a href="css.html"><img class="navBar" src="img/campana.png"></a>
             <a href="Index.html"><img class="navBar" src="img/perroFotoPerfil.png"></a>
         </nav>
     </header>
-    
+
     @foreach (Antecedente Antecedente in ViewBag.Antecedentes)
         {
             <p>@Antecedente.Lugar</p>
             <p>@Antecedente.Fecha</p>
             <p>@Antecedente.Info</p>
+            
+            <a  href='@Url.Action("C_EliminarAntecedente", new { IdAntecedente = @Antecedente.IdAntecedente, IdMascota = @Antecedente.IdMascota})'>Eliminar Antecedente</a>
+        
             <p>Fin</p>
         }
 
@@ -41,9 +45,11 @@
         </div>
             <div class="modal-body" id="Cuerpo">
                 <form method="post" action = '@Url.Action("C_AgregarAntecedente")'>
-                    <input class="largo" type="text" name = "nombre" placeholder="Tipo" required> 
-                    <input class="largo" name = "text" type="lugar" placeholder="Lugar" required><br>
-                    <input class="largo" type="date" name = "fecha" placeholder="Fecha" required><br><br>
+                    <input name="pagina" type="hidden" value="Antecedente" />
+                    <input name="IdMascota" type="hidden" value="@ViewBag.Mascota.IdMascota" />
+                    <input class="largo" type="text" name = "Lugar" placeholder="Lugar" required><br>
+                    <input class="largo" type="date" name = "Fecha" placeholder="Fecha" required>
+                    <input class="largo" type="text" name = "Tipo" placeholder="Tipo" required><br><br>
 
                     <input class="botonPrimario" type="submit" value="Guardar"><br><br><br>
                 </form>
@@ -55,7 +61,8 @@
         </div>
         </div>
 
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 </body>
 
 </html>

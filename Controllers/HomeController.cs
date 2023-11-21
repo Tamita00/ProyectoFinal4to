@@ -60,11 +60,12 @@ public class HomeController : Controller
     }
 
 
-    public IActionResult C_CrearVacuna(int IdMascota, string Tipo, DateTime fecha1, DateTime fecha10)
+    public IActionResult C_CrearVacuna(string pagina, int IdMascota, string Tipo, DateTime fecha1, DateTime fecha10)
     {
         BD.AgregarVacunas(IdMascota, Tipo, fecha1, fecha10);
         ViewBag.IdMascota = BD.MostrarIdMascota();
-        return View("CrearAntecedenteVacuna");
+        ViewBag.Vacunas = BD.MostrarVacunas(IdMascota);
+        return View(pagina);
     }
     
     public IActionResult C_CrearNota()

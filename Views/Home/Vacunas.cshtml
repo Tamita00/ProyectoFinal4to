@@ -20,10 +20,11 @@
             <a href="Index.html"><img class="navBar" src="img/perroFotoPerfil.png"></a>
         </nav>
     </header>
-
+<!-- ELIMINAR -->
     @foreach (Vacuna Vacuna in ViewBag.Vacunas)
         {
             <p>@Vacuna.Tipo</p>
+            <a  href='@Url.Action("C_EliminarVacuna", new { IdVacuna = @Vacuna.IdVacuna, IdMascota = @Antecedente.IdMascota})'>Eliminar Antecedente</a>
             <p>Fin</p>
         }
 
@@ -41,6 +42,7 @@
                 </div>
                 <div class="modal-body" id="Cuerpo">
                      <form method="post" action = '@Url.Action("C_CrearVacuna")'>
+                    <input name="pagina" type="hidden" value="Vacunas" />
                         <input id="IdMascota" name="IdMascota" type="hidden" value="@ViewBag.IdMascota">
                         <input class="largo" type="text" name = "Tipo" placeholder="Tipo" required> 
                         <input class="largo" type="date" name = "fecha1" placeholder="Fecha 1ra Dosis" required><br>

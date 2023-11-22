@@ -136,6 +136,15 @@ public static class BD{
         }
     }
 
+    public static List<Nota> MostrarNotas(int IdMascota){
+        
+        using (SqlConnection db = new SqlConnection(ConnectionString))
+        {
+            string sql = "sp_MostrarNotas";
+            return db.Query<Nota>(sql, new { pIdMascota = IdMascota}, commandType: CommandType.StoredProcedure).ToList();
+        }
+    }
+
 
 //.....Cambiar
     public static void CambiarContra(string Email, string Contraseña){
@@ -162,6 +171,14 @@ public static class BD{
     {
         string sql = "sp_EliminaVacuna";
         db.Execute(sql, new {pIdVacuna = IdVacuna}, commandType: CommandType.StoredProcedure);
+    }
+    }
+
+    public static void EliminarNota(int IdNota){
+    using (SqlConnection db = new SqlConnection(ConnectionString))
+    {
+        string sql = "sp_EliminarNota";
+        db.Execute(sql, new {pIdNota = IdNota}, commandType: CommandType.StoredProcedure);
     }
     }
 

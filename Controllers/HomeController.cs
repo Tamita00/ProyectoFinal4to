@@ -134,10 +134,18 @@ public class HomeController : Controller
         return View("DatosPersonales");
     }    
 
+    
+    public IActionResult C_Agenda(int IdMascota)
+    {
+        ViewBag.IdMascota = IdMascota;
+        ViewBag.Notas = BD.MostrarNotas(IdMascota);
+        return View("Agenda");
+    }    
+
 
 /*ANTECEDENTE*/
 
-        public IActionResult C_EliminarAntecedente(int IdAntecedente, int IdMascota)
+    public IActionResult C_EliminarAntecedente(int IdAntecedente, int IdMascota)
     { 
         BD.EliminarAntecedente(IdAntecedente);
         ViewBag.Antecedentes = BD.MostrarAntecedentes(IdMascota);
@@ -145,6 +153,15 @@ public class HomeController : Controller
         return View("Antecedente");
     }
 
-/*DATOS PERSONALES*/
+
+/*AGENDA*/
+
+public IActionResult C_EliminarNota(int IdNota, int IdMascota)
+    { 
+        BD.EliminarNota(IdNota);
+        ViewBag.Mascota = IdMascota;
+        ViewBag.Notas = BD.MostrarNotas(IdMascota);
+        return View("Agenda");
+    }
 
 }

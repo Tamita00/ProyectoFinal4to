@@ -38,7 +38,7 @@ public static class BD{
     public static void AgregarVacunas(int IdMascota, string Tipo, DateTime fecha1, DateTime fecha10){
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
-            string sql = "sp_CrearVacuna";
+            string sql = "sp_CreaVacuna";
             db.Execute(sql, new {pTipo = Tipo, pFechaDosis1 = fecha1, pFechaCaducidad1 = fecha10}, commandType: CommandType.StoredProcedure);
 
         }   
@@ -149,12 +149,20 @@ public static class BD{
 
 //....Eliminar
 
-        public static void EliminarAntecedente(int IdAntecedente){
-        using (SqlConnection db = new SqlConnection(ConnectionString))
-        {
-            string sql = "sp_EliminarAntecedente";
-            db.Execute(sql, new {pIdAntecedente = IdAntecedente}, commandType: CommandType.StoredProcedure);
-        }
+    public static void EliminarAntecedente(int IdAntecedente){
+    using (SqlConnection db = new SqlConnection(ConnectionString))
+    {
+        string sql = "sp_EliminarAntecedente";
+        db.Execute(sql, new {pIdAntecedente = IdAntecedente}, commandType: CommandType.StoredProcedure);
+    }
+    }
+
+    public static void EliminarVacuna(int IdVacuna){
+    using (SqlConnection db = new SqlConnection(ConnectionString))
+    {
+        string sql = "sp_EliminaVacuna";
+        db.Execute(sql, new {pIdVacuna = IdVacuna}, commandType: CommandType.StoredProcedure);
+    }
     }
 
 }

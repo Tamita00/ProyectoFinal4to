@@ -1,4 +1,4 @@
-ALTER PROCEDURE sp_MostrarMascota
+CREATE PROCEDURE sp_MostrarMascota
 	@pIdMascota int
 AS
 BEGIN

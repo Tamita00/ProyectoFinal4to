@@ -129,6 +129,8 @@ public class HomeController : Controller
     
     public IActionResult C_DatosPersonales(int IdMascota)
     {
+        ViewBag.Mascota = IdMascota;
+        ViewBag.DatosPersonales = BD.MostrarDatosPersonales(IdMascota);
         return View("DatosPersonales");
     }    
 
@@ -142,5 +144,7 @@ public class HomeController : Controller
         ViewBag.Mascota = BD.MostrarMascota(IdMascota);
         return View("Antecedente");
     }
+
+/*DATOS PERSONALES*/
 
 }

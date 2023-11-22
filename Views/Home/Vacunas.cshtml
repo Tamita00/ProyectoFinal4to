@@ -24,7 +24,7 @@
     @foreach (Vacuna Vacuna in ViewBag.Vacunas)
         {
             <p>@Vacuna.Tipo</p>
-            <a  href='@Url.Action("C_EliminarVacuna", new { IdVacuna = @Vacuna.IdVacuna, IdMascota = @Antecedente.IdMascota})'>Eliminar Antecedente</a>
+            <a  href='@Url.Action("C_EliminarVacuna", new { IdVacuna = @Vacuna.IdVacuna})'>Eliminar Antecedente</a>
             <p>Fin</p>
         }
 

@@ -10,22 +10,29 @@
 </head>
 
 <body>
-    <header>
-        <nav class = "MiMascota">
-            <a href="Index.html"><h2>MiMascota</h2></a>
-        
-        
-            <a href="html.html"><img class="navBar" src="img/calendar.png"></a>
-            <a href="css.html"><img class="navBar" src="img/campana.png"></a>
-            <a href="Index.html"><img class="navBar" src="img/perroFotoPerfil.png"></a>
+    
+    <header class="index">
+        <div class="logo">
+            <a href='@Url.Action("C_Antecedente", new {IdMascota = @ViewBag.Mascota.IdMascota})'><img src="img/pata.png" alt="Logo Pata de Perro">
+            <h2>MiMascota</h2></a>
+        </div>
+        <nav class="inicio">
+            <a href='@Url.Action("C_Agenda", new {IdMascota = @ViewBag.Mascota.IdMascota})'><img src="img/calendario1.png"></a>
+            <a href='@Url.Action("C_Perfil", new {IdMascota = @ViewBag.Mascota.IdMascota})'><img src="img/perro.jpg"></a>
         </nav>
+
     </header>
+    <br><h1>Vacunas</h1>
+    
+    <div class="buttons2">
     @foreach (Vacuna Vacuna in ViewBag.Vacunas)
-        {
+        {<button>
             <p>@Vacuna.Tipo</p>
             <a  href='@Url.Action("C_EliminarVacuna", new { IdVacuna = @Vacuna.IdVacuna})'>Eliminar Antecedente</a>
             <p>Fin</p>
+            </button>
         }
+        </div>
 
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalVacuna">Cargar Vacuna</button>
                         

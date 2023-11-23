@@ -10,21 +10,44 @@
 </head>
 
 <body>
-    <header>
-        <nav class = "MiMascota">
-            <a href="Index.html"><h2>MiMascota</h2></a>
-        
-        
-            <a href='@Url.Action("C_Agenda", new {IdMascota = @ViewBag.Mascota.IdMascota})'><img class="navBar" src="img/calendar.png"></a>
-            <a href='@Url.Action("C_Perfil", new {IdMascota = @ViewBag.Mascota.IdMascota})'><img class="navBar" src="img/perroFotoPerfil.png"></a>
+    <header class="index">
+        <div class="logo">
+            <a href='@Url.Action("C_Antecedente", new {IdMascota = @ViewBag.Mascota.IdMascota})'><img src="img/pata.png" alt="Logo Pata de Perro">
+            <h2>MiMascota</h2></a>
+        </div>
+        <nav class="inicio">
+            <a href='@Url.Action("C_Agenda", new {IdMascota = @ViewBag.Mascota.IdMascota})'><img src="img/calendario1.png"></a>
+            <a href='@Url.Action("C_Perfil", new {IdMascota = @ViewBag.Mascota.IdMascota})'><img src="img/perro.jpg"></a>
         </nav>
-    </header>
-    
-    <p>@ViewBag.Mascota.Nombre</p>
 
-    <a href='@Url.Action("C_Antecedente", new {IdMascota = @ViewBag.Mascota.IdMascota})'>Historial</a>
-    <a href='@Url.Action("C_Vacunas", new {IdMascota = @ViewBag.Mascota.IdMascota})'>Vacunas</a>
-    <a href='@Url.Action("C_DatosPersonales", new {IdMascota = @ViewBag.Mascota.IdMascota})'>Datos Personales</a>
+    </header>
+
+    <div class="content-container">
+        <div class="content">
+            <img src="img/perrito.PNG" alt="Imagen de un perro">
+            <p>¿Como se encuentra @ViewBag.Mascota.Nombre hoy?</p>
+        </div>
+    </div>
+    
+<div class="buttons">
+        <button>
+            <p>
+                <a href='@Url.Action("C_Antecedente", new {IdMascota = @ViewBag.Mascota.IdMascota})'>Historia Clinica</a>
+            </p>
+        </button>
+        <button>
+            <p>
+                <a href='@Url.Action("C_Vacunas", new {IdMascota = @ViewBag.Mascota.IdMascota})'>Vacunas</a>
+            </p>
+        </button>
+        <button>
+            <p>
+                <a href='@Url.Action("C_DatosPersonales", new {IdMascota = @ViewBag.Mascota.IdMascota})'>Datos Principales</a>
+            </p>
+        </button>
+    
+    </div>
+</div>
 
 </body>
 

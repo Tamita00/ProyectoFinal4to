@@ -65,13 +65,10 @@ public class HomeController : Controller
         BD.AgregarVacunas(IdMascota, Tipo, fecha1, fecha10);
         ViewBag.IdMascota = BD.MostrarIdMascota();
         ViewBag.Vacunas = BD.MostrarVacunas(IdMascota);
+        ViewBag.DatosPersonales = BD.MostrarDatosPersonales(BD.MostrarIdMascota());
         return View(pagina);
     }
     
-    public IActionResult C_CrearNota()
-    {
-        return View("CrearNota");
-    }
 
 
     /*INICIAR SESION*/
@@ -159,9 +156,24 @@ public class HomeController : Controller
 public IActionResult C_EliminarNota(int IdNota, int IdMascota)
     { 
         BD.EliminarNota(IdNota);
-        ViewBag.Mascota = IdMascota;
+        ViewBag.IdMascota = IdMascota;
         ViewBag.Notas = BD.MostrarNotas(IdMascota);
         return View("Agenda");
     }
+
+    public IActionResult C_CrearNota(int IdMascota, string Lugar, DateTime Fecha, string Info)
+    {   BD.AgregarNota(IdMascota, Lugar, Fecha, Info);
+        ViewBag.IdMascota = IdMascota;
+        ViewBag.Notas = BD.MostrarNotas(IdMascota);
+        return View("Agenda");
+    }
+
+/*PERFIL*/
+public IActionResult C_Perfil(int IdMascota)
+    { 
+        ViewBag.DatosPersonales = BD.MostrarDatosPersonales(IdMascota);
+        return View("Perfil");
+    }
+
 
 }

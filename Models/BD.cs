@@ -44,11 +44,11 @@ public static class BD{
         }   
     }
 
-    public static void AgregarNota(string Lugar, DateTime Fecha, string Info){
+    public static void AgregarNota(int IdMascota, string Lugar, DateTime Fecha, string Info){
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
             string sql = "sp_CrearNota";
-            db.Execute(sql, new {pLugar = Lugar, pInfo = Info, pFecha = Fecha}, commandType: CommandType.StoredProcedure);
+            db.Execute(sql, new {pIdMascota = IdMascota, pLugar = Lugar, pInfo = Info, pFecha = Fecha}, commandType: CommandType.StoredProcedure);
 
         }   
     }

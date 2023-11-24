@@ -10,17 +10,17 @@
 </head>
 
 <body>
-    <a href="SinLogear.html"><img class="volver" src="img/volver.webp"></a><br>
+<a href='@Url.Action("C_IniciarSesion")'><img class="volver" src="\img\volver.png"></a><br>
     <div class="contenedor">
         <div class="input">
-            <img class="sinLoguear" src="img/icono.png"><br>
+            <img class="sinLoguear" src="\img\icono.png"><br>
             <form method = "post" action= '@Url.Action("C_ElegirMascota")'>
             <div class="mascotas">
 
             @foreach (Mascota mascota in ViewBag.Mascotas)
             {
                 <a href='@Url.Action("C_Inicio", new {IdMascota = @mascota.IdMascota})'>
-                    <img src = "/Img/@mascota.Foto" alt ="Foto mascota" width = "300px">  
+                    <img src = "\img\mascotas\@mascota.Foto" alt ="Foto mascota" width = "300px">  
                 </a>
             }
             

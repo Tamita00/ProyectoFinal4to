@@ -34,7 +34,7 @@ public class HomeController : Controller
     {
 
         if(foto.Length > 0){
-            string wwwRootLocal = this.Enviroment.ContentRootPath + @"\wwwroot\img\" + foto.FileName;
+            string wwwRootLocal = this.Enviroment.ContentRootPath + @"\wwwroot\img\mascotas\" + foto.FileName;
             using(var stream = System.IO.File.Create(wwwRootLocal)){
                 foto.CopyToAsync(stream);
             }

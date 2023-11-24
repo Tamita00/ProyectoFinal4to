@@ -10,16 +10,16 @@
 </head>
 
 <body>
-    <a href="SinLogear.html"><img class="volver" src="img/volver.webp"></a><br>
+    <a href='@Url.Action("Index")'><img class="volver" src="\img\volver.png"></a><br>
     <div class="contenedor">
         <div class="input">
             <form method="post" action = '@Url.Action("C_ValidarCuenta")'>
-            <img class="registrarse" src="img/personaCaminando_Registro.png"><br>
+            <img class="registrarse" src="\img\personaCaminando_Registro.png"><br><br>
 
             <input class="largo" name="email" type="email" placeholder="Email"><br>
             <input class="largo" name="contrasena" type="password" placeholder="Contraseña"><br><br>
 
-            <input type = 'Submit' class="botonPrimario" role="button" value = 'Siguiente'><br>
+            <input type = 'Submit' role="button" value = 'Siguiente' id="submit" name="submit"><br>
             <a class="botonSecundario" href='@Url.Action("C_OlvideContrasena")' role="button">Olvidé mi Contraseña</a>
             </form>
         </div>

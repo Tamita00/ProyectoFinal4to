@@ -1,0 +1,249 @@
+
+/*INDEX*/
+.index {
+    background-color: #D3EDED;
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+  
+  }
+  
+  .logo img {
+    width: 45px; 
+    height: auto;
+    margin-right: -15px; 
+  }
+  
+  .logo h2 {
+    margin: 0;
+    font-family: Inria Serif; 
+    font-size: 35px;
+    padding-left: 16px;
+  
+  
+  }
+  
+  .inicio img{
+        width: 60px;
+        height: 55px;
+        border-radius: 50%;
+        margin-right: 20px;
+  }
+  .content {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .content img {
+    width: 260px; 
+    height: auto;
+    margin-right: 30px; 
+    margin-left: 100px;
+    margin-top: 40px;
+    margin-bottom: 5px;
+    border-radius: 20%;
+  
+  }
+  
+  .content p {
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 30px;
+    margin-top: 40px;
+  }
+  .content-container {
+    border: 2px dashed #a39e9e; 
+    padding: 20px; 
+    border-radius: 80px; 
+    margin-left:470px; 
+    margin-right:460px; 
+    margin-top: 60px;
+  }
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .buttons button {
+   
+    height: 70px;
+    width: 450px; 
+    padding: 15px 40px;
+    margin: 30px 0; 
+    font-size: 16px;
+    border: none;
+    border-radius: 30px;
+    background-color: #E0F0F0;
+    color: white;
+    cursor: pointer;
+    transition: background-color 3s ease;
+  }
+  .buttons button p {
+    margin-top: 10px;
+    font-size: 22px;
+    color:black; 
+  
+  }
+  .buttons button p img {
+    width: 45px; 
+    height: auto;
+    margin-right: -15px; 
+  }
+  a {
+    text-decoration: none; 
+    color: #333; 
+    transition: color 0.5s ease;
+  }
+  .contenido a 
+  {
+    text-decoration: none; 
+    color: #333; 
+  }
+  a:hover {
+    color: #111a1f;
+  }
+  
+  /* HISTORIA CLINICA */
+  
+  .content2 {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .content2 img {
+    width: 260px; 
+    height: auto;
+    margin-right: 70px; 
+    margin-left: 100px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    border-radius: 20%;
+  
+  }
+  .content2 div {
+    display: block; 
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 30px;
+    margin-top: 5px;
+    margin-bottom: 150px;
+  }
+  .content2 p {
+    display: block; 
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    margin-top: 70px;
+    margin-bottom: 90px;
+    margin-left: -155px;
+  }
+  .content2 h3
+  {
+    display: block; 
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
+    margin-top: 95px;
+    margin-bottom: 1px;
+    margin-left: -120px;
+  
+  }
+  .buttons2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .buttons2 button
+  {
+    height: 110px;
+    width: 700px; 
+    padding: 15px 40px;
+    margin: 30px 0; 
+    margin-bottom: 70px;
+    margin-top: 30px;
+    font-size: 16px;
+    border: none;
+    border-radius: 30px;
+    background-color: #E0F0F0;
+    color: white;
+    cursor: pointer;
+    transition: background-color 3s ease;
+  }
+  .buttons2 button p {
+    margin-top: 20px;
+    font-size: 35px;
+    margin-right:300px; 
+    color:black; 
+  
+  }
+  p img{
+    width: 32px; 
+    height: auto;
+    margin-right: 5px; 
+  }
+  .dice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 300px; 
+  }
+  
+  .row {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .dot {
+    width: 200px; 
+    height: 60px; 
+    border-radius: 30px; 
+    border: 0.2px solid #ffffff;
+    background-color: #E0F0F0; 
+    margin: 20px; 
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px; 
+  }
+  
+  
+  .dot:hover {
+    background-color: #BCD9D9; 
+    transition: background-color 0.6s ease;
+  }
+  .text-container {
+    text-align: center;
+    margin-right: 300px;
+    margin-bottom: 60px;
+  
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"] {
+    border: none;
+    border-bottom: 2px solid #5daec0; 
+    padding: 4px; 
+    font-size: 16px;
+    outline: none; 
+    width: 300px;
+  }
+  
+  input[type="text"]:focus {
+    border-bottom: 2px solid #9cc3d1; 
+  }

@@ -39,7 +39,7 @@ h1
 
 
 .contenedor {
-  margin-top: 1.5em;
+  margin-top: 9em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -76,11 +76,29 @@ h2 {
   margin-bottom: 0.8em;
 }
 
+#submit{
+  background-color: #aedddd !important;
+  color: #524d4d;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 3em;
+  display: inline-block;
+  margin-bottom: 0.8em;
+}
+
+#submit:hover {
+  background-color: #a3c9c9 !important;
+  text-decoration: none;
+  color: #524d4d;
+  margin-bottom: 0.8em;
+}
+
 .botonSecundario:link,
 .botonSecundario:visited {
   margin-bottom: 0.5em;
   text-decoration: none;
-  color: #524d4d;
+  color: #524d4d !important;
 }
 
 .botonSecundario:hover,
@@ -165,12 +183,13 @@ input:active {
   align-items: center;
   padding-left: 20px;
   padding-right: 20px;
+  text-decoration: none !important;
+  margin: 0 !important;
 }
 .logo {
   display: flex;
   align-items: center;
   padding-left: 10px;
-
 }
 
 .logo img {
@@ -179,13 +198,15 @@ input:active {
   margin-right: -15px; 
 }
 
-.logo h2 {
+.logo .linkMiMascota:link,
+.linkMiMascota:visited, .linkMiMascota:hover,
+.linkMiMascota:active {
   margin: 0;
   font-family: Inria Serif; 
   font-size: 35px;
   padding-left: 16px;
-
-
+  text-decoration: none !important;
+  color: #333;
 }
 
 .inicio img{

@@ -69,7 +69,8 @@ public class HomeController : Controller
     public IActionResult C_CrearVacuna(string pagina, int IdMascota, string Tipo, DateTime fecha1, DateTime fecha10)
     {
         BD.AgregarVacunas(IdMascota, Tipo, fecha1, fecha10);
-        ViewBag.IdMascota = BD.MostrarIdMascota();
+        ViewBag.IdMascota = BD.MostrarIdMascota();        
+        ViewBag.Mascota = BD.MostrarMascota(IdMascota);
         ViewBag.Vacunas = BD.MostrarVacunas(IdMascota);
         ViewBag.DatosPersonales = BD.MostrarDatosPersonales(BD.MostrarIdMascota());
         return View(pagina);
@@ -128,12 +129,13 @@ public class HomeController : Controller
     public IActionResult C_Vacunas(int IdMascota)
     {
         ViewBag.Vacunas = BD.MostrarVacunas(IdMascota);
+        ViewBag.Mascota = BD.MostrarMascota(IdMascota);
         return View("Vacunas");
     }
     
     public IActionResult C_DatosPersonales(int IdMascota)
     {
-        ViewBag.Mascota = IdMascota;
+        ViewBag.Mascota = BD.MostrarMascota(IdMascota);
         ViewBag.DatosPersonales = BD.MostrarDatosPersonales(IdMascota);
         return View("DatosPersonales");
     }    
@@ -141,7 +143,7 @@ public class HomeController : Controller
     
     public IActionResult C_Agenda(int IdMascota)
     {
-        ViewBag.IdMascota = IdMascota;
+        ViewBag.Mascota = BD.MostrarMascota(IdMascota);
         ViewBag.Notas = BD.MostrarNotas(IdMascota);
         return View("Agenda");
     }    
@@ -156,6 +158,16 @@ public class HomeController : Controller
         ViewBag.Mascota = BD.MostrarMascota(IdMascota);
         return View("Antecedente");
     }
+
+/*VACUNA*/
+public IActionResult C_EliminarVacuna(int IdMascota, int IdVacuna)
+    { 
+        BD.EliminarVacuna(IdVacuna);
+        ViewBag.Vacunas = BD.MostrarVacunas(IdMascota);
+        ViewBag.Mascota = BD.MostrarMascota(IdMascota);
+        return View("Vacunas");
+    }
+
 
 
 /*AGENDA*/
@@ -178,6 +190,7 @@ public IActionResult C_EliminarNota(int IdNota, int IdMascota)
 /*PERFIL*/
 public IActionResult C_Perfil(int IdMascota)
     { 
+        ViewBag.Mascota = BD.MostrarMascota(IdMascota);
         ViewBag.DatosPersonales = BD.MostrarDatosPersonales(IdMascota);
         return View("Perfil");
     }

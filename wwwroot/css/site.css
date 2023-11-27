@@ -437,8 +437,8 @@ a:hover {
     margin: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1.5em;
-    margin-top: 3em;
-    margin-bottom: 4em;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
 }
 .content2 h3
 {
@@ -446,8 +446,8 @@ a:hover {
     margin: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1em;
-    margin-top: 4em;
-    margin-bottom: 0.5em;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
 
 }
 .buttons2 {
@@ -490,4 +490,13 @@ input[type="text"]:focus {
   position: absolute;
   float: right;
   position: relative;
+}
+
+
+/*PERFIL*/
+
+.cerrarSesion{
+  justify-content: center !important;
+  text-align: center!important;
+  align-items: center!important;
 }

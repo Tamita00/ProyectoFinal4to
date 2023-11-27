@@ -10,31 +10,33 @@
 </head>
 
 <body>
-    
     <header class="index">
         <div class="logo">
-            <a href='@Url.Action("C_Antecedente", new {IdMascota = @ViewBag.Mascota.IdMascota})'><img src="img/pata.png" alt="Logo Pata de Perro">
-            <h2>MiMascota</h2></a>
+            <img src="\img\pata.png" alt="Logo Pata de Perro">
+            <a  class = "linkMiMascota" href='@Url.Action("C_Inicio", new {IdMascota = @ViewBag.Mascota.IdMascota})'><h2>MiMascota</h2></a>
         </div>
         <nav class="inicio">
-            <a href='@Url.Action("C_Agenda", new {IdMascota = @ViewBag.Mascota.IdMascota})'><img src="img/calendario1.png"></a>
-            <a href='@Url.Action("C_Perfil", new {IdMascota = @ViewBag.Mascota.IdMascota})'><img src="img/perro.jpg"></a>
+            <a href='@Url.Action("C_Agenda", new {IdMascota = @ViewBag.Mascota.IdMascota})'><img src="\img\calendario1.png"></a>
+            <a href='@Url.Action("C_Perfil", new {IdMascota = @ViewBag.Mascota.IdMascota})'><img src="\img\mascotas\@ViewBag.Mascota.Foto "></a>
         </nav>
 
     </header>
+    
     <br><h1>Vacunas</h1>
     
-    <div class="buttons2">
     @foreach (Vacuna Vacuna in ViewBag.Vacunas)
-        {<button>
-            <p>@Vacuna.Tipo</p>
-            <a  href='@Url.Action("C_EliminarVacuna", new { IdVacuna = @Vacuna.IdVacuna})'>Eliminar Antecedente</a>
-            <p>Fin</p>
-            </button>
+        {   
+            <div class="content-container">
+            <div class="content2">
+            <p>Tipo: @Vacuna.Tipo</p>
+            <p>Fecha de la Dosis: @Vacuna.FechaDosis</p>
+            <p>Fecha de Caducidad: @Vacuna.FechaCaducidad</p><br>
+            <a class = "botonPrimario" href='@Url.Action("C_EliminarVacuna", new { IdMascota = @ViewBag.Mascota.IdMascota, IdVacuna = @Vacuna.IdVacuna})'>Eliminar Vacuna</a>
+            </div>
+            </div>
         }
-        </div>
 
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalVacuna">Cargar Vacuna</button>
+<button type="button" id="agregar" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#ModalVacuna">Cargar Vacuna</button>
                         
             <!-- Modal Vacuna -->
 

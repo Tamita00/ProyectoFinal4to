@@ -1,42 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="Style.css">
-    <title>MiMascota</title>
-</head>
-
 <body>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="Style.css">
-    <title>MiMascota</title>
-</head>
+<header class="index">
+        <div class="logo">
+            <img src="\img\pata.png" alt="Logo Pata de Perro">
+            <a  class = "linkMiMascota" href='@Url.Action("C_Inicio", new {IdMascota = @ViewBag.Mascota.IdMascota})'><h2>MiMascota</h2></a>
+        </div>
+        <nav class="inicio">
+            <a href='@Url.Action("C_Agenda", new {IdMascota = @ViewBag.Mascota.IdMascota})'><img src="\img\calendario1.png"></a>
+            <a href='@Url.Action("C_Perfil", new {IdMascota = @ViewBag.Mascota.IdMascota})'><img src="\img\mascotas\@ViewBag.Mascota.Foto "></a>
+        </nav>
+
+    </header>
     <div class="contenedor">
-    
-            <p>@ViewBag.DatosPersonales.Foto</p><br>
-            <p>@ViewBag.DatosPersonales.Nombre</p><br>
-            <p>@ViewBag.DatosPersonales.TipoMascota</p><br>
-            <p>@ViewBag.DatosPersonales.Genero</p><br>
-            <p>@ViewBag.DatosPersonales.Raza</p><br>
-            <p>@ViewBag.DatosPersonales.FechaNacimeinto</p><br>
+        <div class="info">
+           <br><br>
+           <h3>Mascota</h3><br>
+            <img class = "fotoMascota" src="\img\mascotas\@ViewBag.DatosPersonales.Foto"><br><br>
+            <p>Nombre: @ViewBag.DatosPersonales.Nombre</p>
+            <p>Tipo de Mascota: @ViewBag.DatosPersonales.TipoMascota</p>
+            <p>Género: @ViewBag.DatosPersonales.Genero</p>
+            <p>Raza: @ViewBag.DatosPersonales.Raza</p>
+            <p>Fecha de Nacimiento: @ViewBag.DatosPersonales.FechaNacimeinto</p>
 
-            <p>@ViewBag.DatosPersonales.DNI</p><br>
-            <p>@ViewBag.DatosPersonales.NombreD</p><br>
-            <p>@ViewBag.DatosPersonales.Email</p><br>
+            
+           <h3>Dueño</h3><br>
+            <p>DNI: @ViewBag.DatosPersonales.DNI</p>
+            <p>Nombre del dueño: @ViewBag.DatosPersonales.NombreD</p>
+            <p>Email: @ViewBag.DatosPersonales.Email</p>
+    <br><br>
+        </div>
 
-<a href='@Url.Action("Index")'>Cerrar Sesión
-                </a>
-         
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    </div>
+    
+        <br>
+    <a class="cerrarSesion" href='@Url.Action("Index")'>Cerrar Sesión</a>
 </body>
 
 </html>

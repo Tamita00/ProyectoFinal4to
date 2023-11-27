@@ -10,17 +10,17 @@
 </head>
 
 <body>
-    <a href="SinLogear.html"><img class="volver" src="img/volver.webp"></a><br>
+    <a href='@Url.Action("Index")'><img class="volver" src="\img\volver.png"></a><br>
     <div class="contenedor">
         <div class="input">
-            <img class="registrarse" src="img/personaCaminando_Registro.png"><br>
+            <img class="registrarse" src="\img\personaCaminando_Registro.png"><br>
 
             <form method="post" action = '@Url.Action("C_AgregarDueno")'>
                 <input class="corto" type="text" name = "nombre" placeholder="Nombre" required> <input name = "dni" class="corto" type="number" placeholder="DNI del dueño" required> <br>
                 <input class="largo" name = "email" type="email" placeholder="Email" required><br>
                 <input class="largo" type="password" name = "contrasena" placeholder="Contraseña" required><br><br>
 
-                <input class="botonPrimario" type="submit" value="Siguiente"><br><br><br>
+            <input type = 'Submit' role="button" value = 'Siguiente' id="submit" name="submit"><br><br>
             </form>
 
         </div>

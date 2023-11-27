@@ -26,11 +26,11 @@ public static class BD{
         }   
     }
 
-    public static void AgregarAntecedentes(int IdMascota,string Lugar, DateTime Fecha, string Tipo){
+    public static void AgregarAntecedentes(int IdMascota,string Lugar, DateTime Fecha, string Info){
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
             string sql = "sp_CrearAntecedente";
-            db.Execute(sql, new {pIdMascota = IdMascota, pLugar = Lugar, pFecha = Fecha, pTipo = Tipo}, commandType: CommandType.StoredProcedure);
+            db.Execute(sql, new {pIdMascota = IdMascota, pLugar = Lugar, pFecha = Fecha, pInfo = Info}, commandType: CommandType.StoredProcedure);
 
         }   
     }

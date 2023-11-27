@@ -30,6 +30,12 @@ public class HomeController : Controller
         return View("RegistrarseMascota");
     }
 
+    public IActionResult C_AgregarMascotaView(int IdDueno)
+    {
+        ViewBag.IdDueno = IdDueno;
+        return View("RegistrarseMascota");
+    }
+
     public IActionResult C_AgregarMascota(int IdDueno, string Tipo, string Genero, string nombre, string raza, DateTime fechaNacimiento, IFormFile foto)
     {
 
@@ -49,9 +55,9 @@ public class HomeController : Controller
 
 [HttpPost]
 
-    public IActionResult C_AgregarAntecedente(string pagina, int IdMascota, string Lugar, DateTime Fecha, string Tipo)
+    public IActionResult C_AgregarAntecedente(string pagina, int IdMascota, string Lugar, DateTime Fecha, string Info)
     {
-        BD.AgregarAntecedentes(IdMascota, Lugar, Fecha, Tipo);
+        BD.AgregarAntecedentes(IdMascota, Lugar, Fecha, Info);
         ViewBag.DatosPersonales = BD.MostrarDatosPersonales(BD.MostrarIdMascota());
         Mascota Mascota = BD.MostrarMascota(IdMascota);
         ViewBag.Mascota = Mascota;
@@ -85,6 +91,7 @@ public class HomeController : Controller
         if(DuenoExiste == null) return View("IniciarSesion");
         else{
             ViewBag.Mascotas = BD.MostrarMascotas(DuenoExiste.IdDueno);
+            ViewBag.IdDueno = DuenoExiste.IdDueno;
             return View("ElegirMascota");
         } 
     }

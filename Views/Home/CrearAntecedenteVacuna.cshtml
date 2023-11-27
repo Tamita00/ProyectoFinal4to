@@ -10,25 +10,23 @@
 </head>
 
 <body>
-    <a href="Registrarse.html"><img class="volver" src="img/volver.webp"></a><br>
+<a href='@Url.Action("Index")'><img class="volver" src="\img\volver.png"></a><br>
     <div class="contenedor">
-        <div class="input">
-            <img class="registrarse" src="img/PerroCorriendo_Registro.jpg"><br>
-
-
+        <div class="info">
+            <br><br>
             <form method="post" action = '@Url.Action("Index")'>
             <input id="IdMascota" name="IdMascota" type="hidden" value="@ViewBag.IdMascota">
-            
-            <p>@ViewBag.DatosPersonales.Foto</p>
-            <p>@ViewBag.DatosPersonales.Nombre</p>
-            <p>@ViewBag.DatosPersonales.TipoMascota</p>
-            <p>@ViewBag.DatosPersonales.Genero</p>
-            <p>@ViewBag.DatosPersonales.Raza</p>
-            <p>@ViewBag.DatosPersonales.FechaNacimeinto</p>
+            <img class = "fotoMascota" src="\img\mascotas\@ViewBag.DatosPersonales.Foto"><br><br>
+            <p>Nombre: @ViewBag.DatosPersonales.Nombre</p>
+            <p>Tipo de Mascota: @ViewBag.DatosPersonales.TipoMascota</p>
+            <p>Género: @ViewBag.DatosPersonales.Genero</p>
+            <p>Raza: @ViewBag.DatosPersonales.Raza</p>
+            <p>Fecha de Nacimiento: @ViewBag.DatosPersonales.FechaNacimeinto</p>
 
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalAntecedente">Cargar Antecedente</button>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalVacuna">Cargar Vacuna</button>
-                         <input class="botonPrimario" type="submit" value="Siguiente">
+            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#ModalAntecedente">Cargar Antecedente</button><br><br>
+            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#ModalVacuna">Cargar Vacuna</button><br><br><br>
+            
+            <input type = 'Submit' role="button" value = 'Siguiente' id="submit" name="submit"><br><br>
         </form>  
             <!-- Modal Antecedente -->
 
@@ -45,7 +43,7 @@
                         <input id="IdMascota" name="IdMascota" type="hidden" value="@ViewBag.IdMascota">
                         <input class="largo" name = "Lugar" type="text" placeholder="Lugar" required><br>
                         <input class="largo" type="date" name = "Fecha" placeholder="Fecha" required><br>
-                        <input class="largo" type="text" name = "Tipo" placeholder="Tipo" required> <br>
+                        <input class="largo" type="text" name = "Info" placeholder="Tipo" required> <br>
 
                         <input class="botonPrimario" type="submit" value="Guardar"><br><br><br>
                     </form>

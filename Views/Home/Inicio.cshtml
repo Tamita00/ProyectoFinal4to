@@ -16,15 +16,15 @@
             <a  class = "linkMiMascota" href='@Url.Action("C_Antecedente", new {IdMascota = @ViewBag.Mascota.IdMascota})'><h2>MiMascota</h2></a>
         </div>
         <nav class="inicio">
-            <a href='@Url.Action("C_Agenda", new {IdMascota = @ViewBag.Mascota.IdMascota})'><img src="img/calendario1.png"></a>
-            <a href='@Url.Action("C_Perfil", new {IdMascota = @ViewBag.Mascota.IdMascota})'><img src="img/perro.jpg"></a>
+            <a href='@Url.Action("C_Agenda", new {IdMascota = @ViewBag.Mascota.IdMascota})'><img src="\img\calendario1.png"></a>
+            <a href='@Url.Action("C_Perfil", new {IdMascota = @ViewBag.Mascota.IdMascota})'><img src="\img\mascotas\@ViewBag.Mascota.Foto "></a>
         </nav>
 
     </header>
 
     <div class="content-container">
         <div class="content">
-            <img src="img/perrito.PNG" alt="Imagen de un perro">
+            <img src="\img\perrito.PNG" alt="Imagen de un perro">
             <p>¿Como se encuentra @ViewBag.Mascota.Nombre hoy?</p>
         </div>
     </div>
@@ -32,17 +32,17 @@
 <div class="buttons">
         <button>
             <p>
-                <a href='@Url.Action("C_Antecedente", new {IdMascota = @ViewBag.Mascota.IdMascota})'>Historia Clinica</a>
+                <a class = "linkInicio" href='@Url.Action("C_Antecedente", new {IdMascota = @ViewBag.Mascota.IdMascota})'>Historia Clinica</a>
             </p>
         </button>
         <button>
             <p>
-                <a href='@Url.Action("C_Vacunas", new {IdMascota = @ViewBag.Mascota.IdMascota})'>Vacunas</a>
+                <a class = "linkInicio" href='@Url.Action("C_Vacunas", new {IdMascota = @ViewBag.Mascota.IdMascota})'>Vacunas</a>
             </p>
         </button>
         <button>
             <p>
-                <a href='@Url.Action("C_DatosPersonales", new {IdMascota = @ViewBag.Mascota.IdMascota})'>Datos Principales</a>
+                <a class = "linkInicio" href='@Url.Action("C_DatosPersonales", new {IdMascota = @ViewBag.Mascota.IdMascota})'>Datos Principales</a>
             </p>
         </button>
     

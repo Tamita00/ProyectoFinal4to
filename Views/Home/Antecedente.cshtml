@@ -12,33 +12,33 @@
 <body>
     <header class="index">
         <div class="logo">
-            <a href='@Url.Action("C_Antecedente", new {IdMascota = @ViewBag.Mascota.IdMascota})'><img src="img/pata.png" alt="Logo Pata de Perro">
-            <h2>MiMascota</h2></a>
+            <img src="\img\pata.png" alt="Logo Pata de Perro">
+            <a  class = "linkMiMascota" href='@Url.Action("C_Antecedente", new {IdMascota = @ViewBag.Mascota.IdMascota})'><h2>MiMascota</h2></a>
         </div>
         <nav class="inicio">
-            <a href='@Url.Action("C_Agenda", new {IdMascota = @ViewBag.Mascota.IdMascota})'><img src="img/calendario1.png"></a>
-            <a href='@Url.Action("C_Perfil", new {IdMascota = @ViewBag.Mascota.IdMascota})'><img src="img/perro.jpg"></a>
+            <a href='@Url.Action("C_Agenda", new {IdMascota = @ViewBag.Mascota.IdMascota})'><img src="\img\calendario1.png"></a>
+            <a href='@Url.Action("C_Perfil", new {IdMascota = @ViewBag.Mascota.IdMascota})'><img src="\img\mascotas\@ViewBag.Mascota.Foto "></a>
         </nav>
 
     </header>
 
+<br><h1>Historia Clínica</h1>
     @foreach (Antecedente Antecedente in ViewBag.Antecedentes)
         {
             <div class="content-container">
                 <div class="content2">
-                    <img src="img/clinica.jpg" alt="Clinica">
-                    <div>@Antecedente.Info</div>
-                    <p>@Antecedente.Fecha</p>
-                    <h3>@Antecedente.Lugar</h3>
+                    <p>@Antecedente.Info</p><br>
+                    <p>@Antecedente.Fecha</p><br>
+                    <h3>@Antecedente.Lugar</h3><br>
             
-                <a  href='@Url.Action("C_EliminarAntecedente", new { IdAntecedente = @Antecedente.IdAntecedente, IdMascota = @Antecedente.IdMascota})'>Eliminar Antecedente</a>
+                <a  class = "botonPrimario" href='@Url.Action("C_EliminarAntecedente", new { IdAntecedente = @Antecedente.IdAntecedente, IdMascota = @Antecedente.IdMascota})'>Eliminar Antecedente</a>
 
                 </div>
             </div>
 
         }
 
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalAntecedente">Cargar Antecedente</button>
+<button type="button" id="agregar"class="btn btn-light" data-bs-toggle="modal" data-bs-target="#ModalAntecedente">Cargar Antecedente</button>
                         
             <!-- Modal Antecedente -->
 
@@ -55,7 +55,7 @@
                     <input name="IdMascota" type="hidden" value="@ViewBag.Mascota.IdMascota" />
                     <input class="largo" type="text" name = "Lugar" placeholder="Lugar" required><br>
                     <input class="largo" type="date" name = "Fecha" placeholder="Fecha" required>
-                    <input class="largo" type="text" name = "Tipo" placeholder="Tipo" required><br><br>
+                    <input class="largo" type="text" name = "Info" placeholder="Tipo" required><br><br>
 
                     <input class="botonPrimario" type="submit" value="Guardar"><br><br><br>
                 </form>
@@ -72,3 +72,6 @@
 </body>
 
 </html>
+
+
+

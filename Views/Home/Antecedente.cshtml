@@ -13,7 +13,7 @@
     <header class="index">
         <div class="logo">
             <img src="\img\pata.png" alt="Logo Pata de Perro">
-            <a  class = "linkMiMascota" href='@Url.Action("C_Antecedente", new {IdMascota = @ViewBag.Mascota.IdMascota})'><h2>MiMascota</h2></a>
+            <a  class = "linkMiMascota" href='@Url.Action("C_Inicio", new {IdMascota = @ViewBag.Mascota.IdMascota})'><h2>MiMascota</h2></a>
         </div>
         <nav class="inicio">
             <a href='@Url.Action("C_Agenda", new {IdMascota = @ViewBag.Mascota.IdMascota})'><img src="\img\calendario1.png"></a>
@@ -28,7 +28,7 @@
             <div class="content-container">
                 <div class="content2">
                     <p>@Antecedente.Info</p><br>
-                    <p>@Antecedente.Fecha</p><br>
+                    <p>@Antecedente.Fecha.ToShortDateString()</p><br>
                     <h3>@Antecedente.Lugar</h3><br>
             
                 <a  class = "botonPrimario" href='@Url.Action("C_EliminarAntecedente", new { IdAntecedente = @Antecedente.IdAntecedente, IdMascota = @Antecedente.IdMascota})'>Eliminar Antecedente</a>

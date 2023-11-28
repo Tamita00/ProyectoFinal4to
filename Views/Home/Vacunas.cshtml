@@ -29,8 +29,8 @@
             <div class="content-container">
             <div class="content2">
             <p>Tipo: @Vacuna.Tipo</p>
-            <p>Fecha de la Dosis: @Vacuna.FechaDosis</p>
-            <p>Fecha de Caducidad: @Vacuna.FechaCaducidad</p><br>
+            <p>Fecha de la Dosis: @Vacuna.fecha1.ToShortDateString()</p>
+            <p>Fecha de Caducidad: @Vacuna.fecha10.ToShortDateString()</p><br>
             <a class = "botonPrimario" href='@Url.Action("C_EliminarVacuna", new { IdMascota = @ViewBag.Mascota.IdMascota, IdVacuna = @Vacuna.IdVacuna})'>Eliminar Vacuna</a>
             </div>
             </div>
@@ -51,7 +51,7 @@
                 <div class="modal-body" id="Cuerpo">
                      <form method="post" action = '@Url.Action("C_CrearVacuna")'>
                     <input name="pagina" type="hidden" value="Vacunas" />
-                        <input id="IdMascota" name="IdMascota" type="hidden" value="@ViewBag.IdMascota">
+                        <input id="IdMascota" name="IdMascota" type="hidden" value="@ViewBag.Mascota.IdMascota">
                         <input class="largo" type="text" name = "Tipo" placeholder="Tipo" required> 
                         <input class="largo" type="date" name = "fecha1" placeholder="Fecha 1ra Dosis" required><br>
                         <input class="largo" type="date" name = "fecha10" placeholder="Fecha Caducacion 1ra Dosis" required><br><br>

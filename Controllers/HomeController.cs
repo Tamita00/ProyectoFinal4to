@@ -49,7 +49,7 @@ public class HomeController : Controller
         BD.AgregarMascota(IdDueno, Tipo, Genero, nombre, raza, fechaNacimiento, foto.FileName);
         int IdMascota = BD.MostrarIdMascota();
         ViewBag.DatosPersonales = BD.MostrarDatosPersonales(IdMascota);
-        ViewBag.IdMascota = IdMascota;
+        ViewBag.Mascota = BD.MostrarMascota(IdMascota);
         return View("CrearAntecedenteVacuna");
     }
 
@@ -58,21 +58,19 @@ public class HomeController : Controller
     public IActionResult C_AgregarAntecedente(string pagina, int IdMascota, string Lugar, DateTime Fecha, string Info)
     {
         BD.AgregarAntecedentes(IdMascota, Lugar, Fecha, Info);
-        ViewBag.DatosPersonales = BD.MostrarDatosPersonales(BD.MostrarIdMascota());
-        Mascota Mascota = BD.MostrarMascota(IdMascota);
-        ViewBag.Mascota = Mascota;
-        ViewBag.Antecedentes = BD.MostrarAntecedentes(Mascota.IdMascota);
+        ViewBag.DatosPersonales = BD.MostrarDatosPersonales(IdMascota);
+        ViewBag.Mascota = BD.MostrarMascota(IdMascota);
+        ViewBag.Antecedentes = BD.MostrarAntecedentes(IdMascota);
         return View(pagina);
     }
 
-
     public IActionResult C_CrearVacuna(string pagina, int IdMascota, string Tipo, DateTime fecha1, DateTime fecha10)
     {
-        BD.AgregarVacunas(IdMascota, Tipo, fecha1, fecha10);
-        ViewBag.IdMascota = BD.MostrarIdMascota();        
+        BD.AgregarVacunas(IdMascota, Tipo, fecha1, fecha10);     
         ViewBag.Mascota = BD.MostrarMascota(IdMascota);
         ViewBag.Vacunas = BD.MostrarVacunas(IdMascota);
-        ViewBag.DatosPersonales = BD.MostrarDatosPersonales(BD.MostrarIdMascota());
+        ViewBag.DatosPersonales = BD.MostrarDatosPersonales(IdMascota);
+                                           
         return View(pagina);
     }
     
@@ -102,11 +100,12 @@ public class HomeController : Controller
         return View("OlvideContrasena");
     }
 
-    public IActionResult C_CambiarContrasena(string email, string contrasena)
+    public IActionResult C_CambiarContrasena(string email, string cotrasena)
     {
-        BD.CambiarContra(email, contrasena);
-
-        return View("IniciarSesion");
+        
+            BD.CambiarContra(email, cotrasena);
+            return View("IniciarSesion");
+        
     }
     
 
@@ -175,14 +174,14 @@ public IActionResult C_EliminarVacuna(int IdMascota, int IdVacuna)
 public IActionResult C_EliminarNota(int IdNota, int IdMascota)
     { 
         BD.EliminarNota(IdNota);
-        ViewBag.IdMascota = IdMascota;
+        ViewBag.Mascota = BD.MostrarMascota(IdMascota);
         ViewBag.Notas = BD.MostrarNotas(IdMascota);
         return View("Agenda");
     }
 
     public IActionResult C_CrearNota(int IdMascota, string Lugar, DateTime Fecha, string Info)
     {   BD.AgregarNota(IdMascota, Lugar, Fecha, Info);
-        ViewBag.IdMascota = IdMascota;
+        ViewBag.Mascota = BD.MostrarMascota(IdMascota);
         ViewBag.Notas = BD.MostrarNotas(IdMascota);
         return View("Agenda");
     }

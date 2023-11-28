@@ -11,16 +11,19 @@
 
 <body class ="bodyCalendario">
 
-            <input id="IdMascota" name="IdMascota" type="hidden" value="@ViewBag.IdMascota">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="Style.css">
-    <title>MiMascota</title>
-</head>
-    
-    <h1 class="title">Calendario Interactivo</h1>
+<header class="index">
+        <div class="logo">
+            <img src="\img\pata.png" alt="Logo Pata de Perro">
+            <a  class = "linkMiMascota" href='@Url.Action("C_Inicio", new {IdMascota = @ViewBag.Mascota.IdMascota})'><h2>MiMascota</h2></a>
+        </div>
+        <nav class="inicio">
+            <a href='@Url.Action("C_Agenda", new {IdMascota = @ViewBag.Mascota.IdMascota})'><img src="\img\calendario1.png"></a>
+            <a href='@Url.Action("C_Perfil", new {IdMascota = @ViewBag.Mascota.IdMascota})'><img src="\img\mascotas\@ViewBag.Mascota.Foto "></a>
+        </nav>
+
+    </header>
+    <br><br><br>
+ <h1 class="title">Calendario Interactivo</h1>
 
 <div class="calendar">
     <div class="calendar__info">
@@ -31,30 +34,39 @@
     </div>
 
     <div class="calendar__week">
-        <div class="calendar__day calendar__item">Mon</div>
-        <div class="calendar__day calendar__item">Tue</div>
-        <div class="calendar__day calendar__item">Wed</div>
-        <div class="calendar__day calendar__item">Thu</div>
-        <div class="calendar__day calendar__item">Fri</div>
-        <div class="calendar__day calendar__item">Sat</div>
-        <div class="calendar__day calendar__item">Sun</div>
+        <div class="calendar__day calendar__item">Lun</div>
+        <div class="calendar__day calendar__item">Mar</div>
+        <div class="calendar__day calendar__item">Mie</div>
+        <div class="calendar__day calendar__item">Jue</div>
+        <div class="calendar__day calendar__item">Vie</div>
+        <div class="calendar__day calendar__item">Sab</div>
+        <div class="calendar__day calendar__item">Dom</div>
     </div>
 
     <div class="calendar__dates" id="dates"></div>
 </div>
 
+
+
+
+
+
+
 <div class = "notas">
 
     @foreach (Nota Nota in ViewBag.Notas)
         {
-            <p>@Nota.Lugar</p>
-            <p>@Nota.Info</p>
-            <p>@Nota.FechaDosis</p>
-            <a  href='@Url.Action("C_EliminarNota", new { IdNota = @Nota.IdNota, IdMascota = @ViewBag.IdMascota})'>Eliminar Nota 2</a>
-            <p>Fin</p>
+        <div class="content-container">
+            <div class="content2">
+                <p>@Nota.Lugar</p>
+                <p>@Nota.Info</p>
+                <p>@Nota.Fecha.ToShortDateString()</p>
+                <a class  ="botonPrimario" href='@Url.Action("C_EliminarNota", new { IdNota = @Nota.IdNota, IdMascota = @ViewBag.Mascota.IdMascota})'>Eliminar Nota</a>
+            </div>
+            </div>
         }
 
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalNota">Crear Nota</button>
+            <button type="button" id = "agregar" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#ModalNota">Crear Nota</button>
                         
             <!-- Modal Nota -->
 
@@ -67,7 +79,7 @@
         </div>
             <div class="modal-body" id="Cuerpo">
                 <form method="post" action = '@Url.Action("C_CrearNota")'>
-                    <input name="IdMascota" type="hidden" value="@ViewBag.IdMascota" />
+                    <input name="IdMascota" type="hidden" value="@ViewBag.Mascota.IdMascota" />
                     <input class="largo" type="text" name = "Lugar" placeholder="Lugar" required><br>
                     <input class="largo" type="date" name = "Fecha" placeholder="Fecha" required>
                     <input class="largo" type="text" name = "Info" placeholder="Información" required><br><br>

@@ -38,8 +38,8 @@ public static class BD{
     public static void AgregarVacunas(int IdMascota, string Tipo, DateTime fecha1, DateTime fecha10){
         using (SqlConnection db = new SqlConnection(ConnectionString))
         {
-            string sql = "sp_CrearVacuna";
-            db.Execute(sql, new {pTipo = Tipo, pFechaDosis1 = fecha1, pFechaCaducidad1 = fecha10}, commandType: CommandType.StoredProcedure);
+            string sql = "sp_CreaVacuna";
+            db.Execute(sql, new {pTipo = Tipo, pfecha1 = fecha1, pfecha10 = fecha10, pIdMascota = IdMascota }, commandType: CommandType.StoredProcedure);
 
         }   
     }

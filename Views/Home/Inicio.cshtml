@@ -30,21 +30,28 @@
     </div>
     
 <div class="buttons">
+        <a class = "linkInicio" href='@Url.Action("C_Antecedente", new {IdMascota = @ViewBag.Mascota.IdMascota})'>
         <button>
             <p>
-                <a class = "linkInicio" href='@Url.Action("C_Antecedente", new {IdMascota = @ViewBag.Mascota.IdMascota})'>Historia Clinica</a>
+                Historia Clinica
             </p>
         </button>
+        </a>
+
+        <a class = "linkInicio" href='@Url.Action("C_Vacunas", new {IdMascota = @ViewBag.Mascota.IdMascota})'><button>
+            <p>
+                Vacunas
+            </p>
+        </button>
+        </a>
+
+        <a class = "linkInicio" href='@Url.Action("C_DatosPersonales", new {IdMascota = @ViewBag.Mascota.IdMascota})'>
         <button>
             <p>
-                <a class = "linkInicio" href='@Url.Action("C_Vacunas", new {IdMascota = @ViewBag.Mascota.IdMascota})'>Vacunas</a>
+                Datos Principales
             </p>
         </button>
-        <button>
-            <p>
-                <a class = "linkInicio" href='@Url.Action("C_DatosPersonales", new {IdMascota = @ViewBag.Mascota.IdMascota})'>Datos Principales</a>
-            </p>
-        </button>
+        </a>
     
     </div>
 </div>

@@ -21,13 +21,14 @@
             <p>Tipo de Mascota: @ViewBag.DatosPersonales.TipoMascota</p>
             <p>Género: @ViewBag.DatosPersonales.Genero</p>
             <p>Raza: @ViewBag.DatosPersonales.Raza</p>
-            <p>Fecha de Nacimiento: @ViewBag.DatosPersonales.FechaNacimeinto</p>
+            <p>Fecha de Nacimiento: @ViewBag.DatosPersonales.FechaNacimiento.ToShortDateString()</p>
 
             <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#ModalAntecedente">Cargar Antecedente</button><br><br>
             <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#ModalVacuna">Cargar Vacuna</button><br><br><br>
             
             <input type = 'Submit' role="button" value = 'Siguiente' id="submit" name="submit"><br><br>
         </form>  
+        
             <!-- Modal Antecedente -->
 
             <div class="modal fade" id="ModalAntecedente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -40,7 +41,7 @@
                 <div class="modal-body" id="Cuerpo">
                      <form method="post" action = '@Url.Action("C_AgregarAntecedente")'>
                         <input name="pagina" type="hidden" value="CrearAntecedenteVacuna" />
-                        <input id="IdMascota" name="IdMascota" type="hidden" value="@ViewBag.IdMascota">
+                        <input id="IdMascota" name="IdMascota" type="hidden" value="@ViewBag.Mascota.IdMascota">
                         <input class="largo" name = "Lugar" type="text" placeholder="Lugar" required><br>
                         <input class="largo" type="date" name = "Fecha" placeholder="Fecha" required><br>
                         <input class="largo" type="text" name = "Info" placeholder="Tipo" required> <br>
@@ -54,7 +55,6 @@
                 </div>
             </div>
             </div>
-
             <!-- Modal Vacuna  -->
 
             <div class="modal fade" id="ModalVacuna" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -67,7 +67,7 @@
                 <div class="modal-body" id="Cuerpo">
                      <form method="post" action = '@Url.Action("C_CrearVacuna")'>
                         <input name="pagina" type="hidden" value="CrearAntecedenteVacuna" />
-                        <input id="IdMascota" name="IdMascota" type="hidden" value="@ViewBag.IdMascota">
+                        <input id="IdMascota" name="IdMascota" type="hidden" value="@ViewBag.Mascota.IdMascota">
                         <input class="largo" type="text" name = "Tipo" placeholder="Tipo" required> 
                         <input class="largo" type="date" name = "fecha1" placeholder="Fecha 1ra Dosis" required><br>
                         <input class="largo" type="date" name = "fecha10" placeholder="Fecha Caducacion 1ra Dosis" required><br><br>

@@ -4,7 +4,7 @@ public class MascotaDueno{
     public string Genero {get;set;}
     public string Nombre {get;set;}
     public string Raza {get;set;}
-    public DateTime FechaNacimeinto {get;set;}
+    public DateTime FechaNacimiento {get;set;}
     public string Foto {get;set;}
     
     public int IdDueno {get;set;}
@@ -15,13 +15,13 @@ public class MascotaDueno{
 
 public MascotaDueno(){}
 
-public MascotaDueno(int pIdMascota,  string pTipoMascota, string pGenero, string pNombre, string pRaza, DateTime pFechaNacimeinto, string pFoto, int pIdDueno, int pDNI, string pNombreD, string pEmail, string pContraseña){
+public MascotaDueno(int pIdMascota,  string pTipoMascota, string pGenero, string pNombre, string pRaza, DateTime pFechaNacimiento, string pFoto, int pIdDueno, int pDNI, string pNombreD, string pEmail, string pContraseña){
     IdMascota=pIdMascota;
     TipoMascota=pTipoMascota;
     Genero=pGenero;
     Nombre=pNombre;
     Raza=pRaza;
-    FechaNacimeinto=pFechaNacimeinto;
+    FechaNacimiento=pFechaNacimiento;
     Foto=pFoto;
 
     IdDueno=pIdDueno;

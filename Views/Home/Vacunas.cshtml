@@ -52,9 +52,11 @@
                      <form method="post" action = '@Url.Action("C_CrearVacuna")'>
                     <input name="pagina" type="hidden" value="Vacunas" />
                         <input id="IdMascota" name="IdMascota" type="hidden" value="@ViewBag.Mascota.IdMascota">
-                        <input class="largo" type="text" name = "Tipo" placeholder="Tipo" required> 
-                        <input class="largo" type="date" name = "fecha1" placeholder="Fecha 1ra Dosis" required><br>
-                        <input class="largo" type="date" name = "fecha10" placeholder="Fecha Caducacion 1ra Dosis" required><br><br>
+                        <input class="largo" type="text" name = "Tipo" placeholder="Tipo" required><br><br>
+                        <p>Fecha de la 1ra Dosis</p>
+                        <input class="largo" type="date" name = "fecha1" placeholder="Fecha 1ra Dosis" required><br><br>
+                        <p>Fecha de la segunda vacuna/Caducacion *Opcional</p>
+                        <input class="largo" type="date" name = "fecha10" placeholder="Fecha Caducacion 1ra Dosis"><br><br>
 
                         <input class="botonPrimario" type="submit" value="Guardar"><br><br><br>
                     </form>

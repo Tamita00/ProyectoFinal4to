@@ -53,8 +53,9 @@
                 <form method="post" action = '@Url.Action("C_AgregarAntecedente")'>
                     <input name="pagina" type="hidden" value="Antecedente" />
                     <input name="IdMascota" type="hidden" value="@ViewBag.Mascota.IdMascota" />
-                    <input class="largo" type="text" name = "Lugar" placeholder="Lugar" required><br>
-                    <input class="largo" type="date" name = "Fecha" placeholder="Fecha" required>
+                    <input class="largo" type="text" name = "Lugar" placeholder="Lugar" required><br><br>
+                    <p>Fecha</p>
+                    <input class="largo" type="date" name = "Fecha" placeholder="Fecha" required><br><br>
                     <input class="largo" type="text" name = "Info" placeholder="Tipo" required><br><br>
 
                     <input class="botonPrimario" type="submit" value="Guardar"><br><br><br>

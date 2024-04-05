@@ -43,6 +43,7 @@
                         <input name="pagina" type="hidden" value="CrearAntecedenteVacuna" />
                         <input id="IdMascota" name="IdMascota" type="hidden" value="@ViewBag.Mascota.IdMascota">
                         <input class="largo" name = "Lugar" type="text" placeholder="Lugar" required><br>
+                        <p>Fecha</p>
                         <input class="largo" type="date" name = "Fecha" placeholder="Fecha" required><br>
                         <input class="largo" type="text" name = "Info" placeholder="Tipo" required> <br>
 
@@ -69,8 +70,10 @@
                         <input name="pagina" type="hidden" value="CrearAntecedenteVacuna" />
                         <input id="IdMascota" name="IdMascota" type="hidden" value="@ViewBag.Mascota.IdMascota">
                         <input class="largo" type="text" name = "Tipo" placeholder="Tipo" required> 
-                        <input class="largo" type="date" name = "fecha1" placeholder="Fecha 1ra Dosis" required><br>
-                        <input class="largo" type="date" name = "fecha10" placeholder="Fecha Caducacion 1ra Dosis" required><br><br>
+                        <p>Fecha de la primera vacuna</p>
+                        <input class="largo" type="date" name = "fecha1" required><br>
+                        <p>Fecha de la segunda vacuna/Caducacion +</p>
+                        <input class="largo" type="date" name = "fecha10"><br><br>
 
                         <input class="botonPrimario" type="submit" value="Guardar"><br><br><br>
                     </form>

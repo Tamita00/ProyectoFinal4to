@@ -23,6 +23,8 @@
     </header>
     
     <br><h1>Vacunas</h1>
+    <br>
+    <h2 class = "subtitulo">Agregá las vacunas que le diste a tu mascota</h2>
     
     @foreach (Vacuna Vacuna in ViewBag.Vacunas)
         {   
@@ -50,15 +52,17 @@
                 </div>
                 <div class="modal-body" id="Cuerpo">
                      <form method="post" action = '@Url.Action("C_CrearVacuna")'>
+                     <div class = "modalCentrar">
                     <input name="pagina" type="hidden" value="Vacunas" />
                         <input id="IdMascota" name="IdMascota" type="hidden" value="@ViewBag.Mascota.IdMascota">
                         <input class="largo" type="text" name = "Tipo" placeholder="Tipo" required><br><br>
                         <p>Fecha de la 1ra Dosis</p>
-                        <input class="largo" type="date" name = "fecha1" placeholder="Fecha 1ra Dosis" required><br><br>
+                        <input class="largo" type="date" name = "fecha1" placeholder="Fecha 1ra Dosis" required><br><br><br>
                         <p>Fecha de la segunda vacuna/Caducacion *Opcional</p>
                         <input class="largo" type="date" name = "fecha10" placeholder="Fecha Caducacion 1ra Dosis"><br><br>
 
-                        <input class="botonPrimario" type="submit" value="Guardar"><br><br><br>
+                        <input class="botonGuardar" type="submit" value="Guardar"><br><br><br>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">

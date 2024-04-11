@@ -35,6 +35,14 @@ h1
   text-align: center;
 }
 
+.subtitulo
+{
+  text-align: center;
+  font-size: 1em;
+  color: rgb(119, 119, 119);
+  font-family: Verdana;
+}
+
 /*SIN LOGUEAR*/
 
 
@@ -54,6 +62,27 @@ h1
 h2 {
   font-family: 'Inria Serif';
   font-weight: 500;
+}
+
+.botonGuardar{
+  background-color: #aedddd;
+  color: #524d4d;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 3em;
+  display: inline-block;
+  margin-bottom: 0.8em;
+  box-shadow: 0.1px 2px 2px rgb(179, 179, 179);
+}
+
+.botonGuardar:hover,
+.botonPrimario:active {
+  background-color: #a3c9c9;
+  text-decoration: none;
+  color: #524d4d;
+  margin-bottom: 0.8em;
+  box-shadow: 0.1px 2px 2px rgb(179, 179, 179);
 }
 
 .botonPrimario:link,
@@ -160,6 +189,7 @@ input:active {
   border: 1px solid #b5c4c4;
   margin-bottom: 1em;
 }
+
 
 /*CREAR ANTECEDENTE VACUNA*/
 .fotoMascota{
@@ -549,3 +579,9 @@ input[type="text"]:focus {
     margin: auto; }
   .calendar__last-days {
     opacity: .3; }
+
+.modalCentrar{
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}

@@ -42,12 +42,12 @@
                      <form method="post" action = '@Url.Action("C_AgregarAntecedente")'>
                         <input name="pagina" type="hidden" value="CrearAntecedenteVacuna" />
                         <input id="IdMascota" name="IdMascota" type="hidden" value="@ViewBag.Mascota.IdMascota">
-                        <input class="largo" name = "Lugar" type="text" placeholder="Lugar" required><br>
-                        <p>Fecha</p>
-                        <input class="largo" type="date" name = "Fecha" placeholder="Fecha" required><br>
-                        <input class="largo" type="text" name = "Info" placeholder="Tipo" required> <br>
+                        <input class="largo" name = "Lugar" type="text" placeholder="Lugar" required><br><br>
+                        <p>Fecha del Antecedente:</p>
+                        <input class="largo" type="date" name = "Fecha" placeholder="Fecha" required><br><br>
+                        <input class="largo" type="text" name = "Info" placeholder="Tipo" required> <br><br>
 
-                        <input class="botonPrimario" type="submit" value="Guardar"><br><br><br>
+                        <input class="botonGuardar" type="submit" value="Guardar"><br><br><br>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -69,13 +69,13 @@
                      <form method="post" action = '@Url.Action("C_CrearVacuna")'>
                         <input name="pagina" type="hidden" value="CrearAntecedenteVacuna" />
                         <input id="IdMascota" name="IdMascota" type="hidden" value="@ViewBag.Mascota.IdMascota">
-                        <input class="largo" type="text" name = "Tipo" placeholder="Tipo" required> 
+                        <input class="largo" type="text" name = "Tipo" placeholder="Tipo" required><br><br> 
                         <p>Fecha de la primera vacuna</p>
-                        <input class="largo" type="date" name = "fecha1" required><br>
-                        <p>Fecha de la segunda vacuna/Caducacion +</p>
+                        <input class="largo" type="date" name = "fecha1" required><br><br><br> 
+                        <p>Fecha de la segunda vacuna/Caducacion *Opcional</p>
                         <input class="largo" type="date" name = "fecha10"><br><br>
 
-                        <input class="botonPrimario" type="submit" value="Guardar"><br><br><br>
+                        <input class="botonGuardar" type="submit" value="Guardar"><br><br><br>
                     </form>
                 </div>
                 <div class="modal-footer">

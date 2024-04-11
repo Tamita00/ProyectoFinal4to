@@ -79,12 +79,15 @@
         </div>
             <div class="modal-body" id="Cuerpo">
                 <form method="post" action = '@Url.Action("C_CrearNota")'>
+                <div class = "modalCentrar">
                     <input name="IdMascota" type="hidden" value="@ViewBag.Mascota.IdMascota" />
-                    <input class="largo" type="text" name = "Lugar" placeholder="Lugar" required><br>
-                    <input class="largo" type="date" name = "Fecha" placeholder="Fecha" required>
+                    <input class="largo" type="text" name = "Lugar" placeholder="Lugar" required><br><br><br>
+                    <p>Fecha del acontecimiento:</p>
+                    <input class="largo" type="date" name = "Fecha" placeholder="Fecha" required><br><br><br>
                     <input class="largo" type="text" name = "Info" placeholder="Información" required><br><br>
 
-                    <input class="botonPrimario" type="submit" value="Guardar"><br><br><br>
+                    <input class="botonGuardar" type="submit" value="Guardar"><br><br><br>
+                </div>
                 </form>
             </div>
             <div class="modal-footer">

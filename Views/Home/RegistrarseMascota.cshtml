@@ -19,25 +19,24 @@
             <form method="post" action = '@Url.Action("C_AgregarMascota")' enctype = "multipart/form-data">
             <input id="IdDueno" name="IdDueno" type="hidden" value="@ViewBag.IdDueno">
 
-            <br><p>¿Qué clase de mascota tenés?</p>
+            <p class = "MascotaRegistro">¿Qué clase de mascota tenés?</p>
             
             <input type="radio" class="btn-check" name="Tipo" id="Gato" value = "Gato" autocomplete="off">
             <label class="btn btn-light" for="Gato">Gato</label>
 
             <input type="radio" class="btn-check" name="Tipo" id="Perro" value = "Perro" autocomplete="off">
-            <label class="btn btn-light" for="Perro">Perro</label><br>
+            <label class="btn btn-light" for="Perro">Perro</label>
+            <p class = "SexoMascota">De qué sexo es?</p> 
             
-            <br><p>De qué sexo es?</p><br>
-
             <input type="radio" class="btn-check" name="Genero" id="Macho" value = "Macho" autocomplete="off">
             <label class="btn btn-light" for="Macho">Macho</label>
 
             <input type="radio" class="btn-check" name="Genero" id="Hembra" value = "Hembra"  autocomplete="off">
-            <label class="btn btn-light" for="Hembra">Hembra</label><br>
-
+            <label class="btn btn-light" for="Hembra">Hembra</label>
+<br>
 
             <input class="corto" type="text" name = "nombre" placeholder="Nombre de la Mascota" required> <input class="corto" type="text" name = "raza" placeholder="Raza" required><br>
-            <br><p>Fecha de nacimiento:</p><br>
+            <br><p>Fecha de nacimiento:</p>
             <input class="largo"  name = "fechaNacimiento" type="date" placeholder="Fecha de Nacimiento de la Mascota" required><br>
             <input class="largo" name = "foto" type="file" placeholder="Subir Foto de la Mascota" required><br><br>
 

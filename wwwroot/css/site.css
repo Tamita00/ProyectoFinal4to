@@ -154,7 +154,7 @@ h2 {
 .contenedor .input .corto {
   width: 15em;
   margin-left: 2em;
-  margin-bottom: 1.5em;
+  margin-bottom: 0.5em;
 }
 
 input {
@@ -181,13 +181,18 @@ input:active {
 
 
 /*REGISTRARSE MASCOTA*/
+.
+.MascotaRegistro{
+  margin-top: 0.5em;
+}
 
 .btn-light {
+  margin-top: 0.5;
   margin-left: 2em;
   margin-right: 2em;
   background-color: #E0F0F0;
   border: 1px solid #b5c4c4;
-  margin-bottom: 1em;
+  margin-bottom: 2em;
 }
 
 

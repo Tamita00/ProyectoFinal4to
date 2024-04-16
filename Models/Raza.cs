@@ -1,8 +1,8 @@
 public class Raza{
-    public string raza {get;set;}
+    public string nombre {get;set;}
 public Raza(){}
 
-public Raza(string pRaza){
-    raza=pRaza;
+public Raza(string pNombre){
+    nombre=pNombre;
 }
 }

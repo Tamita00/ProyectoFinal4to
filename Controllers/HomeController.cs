@@ -27,12 +27,16 @@ public class HomeController : Controller
     {
         BD.AgregarDueno(contrasena, dni, nombre, email);
         ViewBag.IdDueno = BD.MostrarIdDueno();
+        ViewBag.Razas = BD.MostrarRazas();
         return View("RegistrarseMascota");
     }
+
+
 
     public IActionResult C_AgregarMascotaView(int IdDueno)
     {
         ViewBag.IdDueno = IdDueno;
+        ViewBag.Razas = BD.MostrarRazas();
         return View("RegistrarseMascota");
     }
 

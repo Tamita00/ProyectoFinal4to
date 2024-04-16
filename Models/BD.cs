@@ -145,6 +145,15 @@ public static class BD{
         }
     }
 
+    public static List<Raza> MostrarRazas(){
+        
+        using (SqlConnection db = new SqlConnection(ConnectionString))
+        {
+            string sql = "sp_MostrarRaza";
+            return db.Query<Raza>(sql, commandType: CommandType.StoredProcedure).ToList();
+        }
+    }
+
 
 //.....Cambiar
     public static void CambiarContra(string Email, string Contraseña){

@@ -35,7 +35,19 @@
             <label class="btn btn-light" for="Hembra">Hembra</label>
 <br>
 
-            <input class="corto" type="text" name = "nombre" placeholder="Nombre de la Mascota" required> <input class="corto" type="text" name = "raza" placeholder="Raza" required><br>
+            <input class="corto" type="text" name = "nombre" placeholder="Nombre de la Mascota" required>
+            
+            // COMENTARIO // <input class="corto" type="text" name = "raza" placeholder="Raza" required><br> // COMENTARIO // 
+            
+            <input type="string" multiple name="raza" id="raza" list="razas" required size="64" />
+            <datalist  name="raza">
+                @foreach (String raza in ViewBag.Razas)
+                {
+                    <option name = "@ViewBag.raza.nombre" value="raza">@ViewBag.raza.nombre</option>
+                }
+                
+            </datalist >
+
             <br><p>Fecha de nacimiento:</p>
             <input class="largo"  name = "fechaNacimiento" type="date" placeholder="Fecha de Nacimiento de la Mascota" required><br>
             <input class="largo" name = "foto" type="file" placeholder="Subir Foto de la Mascota" required><br><br>

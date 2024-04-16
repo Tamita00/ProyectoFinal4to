@@ -10,6 +10,6 @@ CREATE PROCEDURE [dbo].[sp_MostrarRaza]
 @RazaReci varchar(8000)
 AS
 BEGIN
-	SELECT * FROM Raza WHERE Raza.Raza = @RazaReci;
+	SELECT * FROM Raza;
 	
 END

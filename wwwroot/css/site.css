@@ -181,7 +181,7 @@ input:active {
 
 
 /*REGISTRARSE MASCOTA*/
-.
+
 .MascotaRegistro{
   margin-top: 0.5em;
 }
@@ -212,7 +212,44 @@ input:active {
 
 
 /*ELEGIR MASCOTA*/
+.contenedorElegir {
+  display: flex;
+  justify-content: center;
+  margin-top: 6em;
+}
 
+.infoElegirMascota {
+  border-radius: 5em;
+  border: 0.2px dashed #cac7c7;
+  padding: 20px;
+  width: 250px; /* Ancho fijo para los contenedores */
+  height: 250px; /* Altura fija para que sea un cuadrado */
+  display: flex; /* Para centrar el contenido verticalmente */
+  justify-content: center; /* Para centrar el contenido horizontalmente */
+  align-items: center; /* Para centrar el contenido verticalmente */
+  margin: 10px; /* Espacio entre los contenedores */
+}
+
+.infoElegirMascota img {
+  max-width: 75%; /* Ajustar el tamaño máximo de la imagen */
+  max-height: 75%; /* Ajustar el tamaño máximo de la imagen */
+  border-radius: 20%; /* Hacer la imagen redonda */
+}
+
+.infoElegirMascota h3,
+.infoElegirMascota p {
+  margin: 10px 0; /* Añadir margen alrededor del texto */
+  text-align: center; /* Centrar el texto */
+}
+
+.infoElegirMascota a {
+  margin-top: auto; /* Mover el botón hacia abajo para que esté centrado */
+  text-align: center; /* Centrar el texto */
+}
+
+.infoElegirMascota .botonPrimario {
+  margin-top: auto; /* Mover el botón hacia abajo para que esté centrado */
+}
 .buttons3 {
   display: flex;
   flex-direction: column;
@@ -278,7 +315,7 @@ a:hover {
 }
 .logo1 .MiMascota
 {
-  margin-top: 40px;
+  margin-top: 20px;
   margin-bottom: 20px;
   width: 250px;
 }
@@ -294,7 +331,6 @@ a:hover {
 
 .imagenes {
   display: flex;
-  flex-direction: column; /* Organiza las filas de imágenes en columnas */
   align-items: center; /* Centra las imágenes horizontalmente */
 }
 

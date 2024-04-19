@@ -36,19 +36,17 @@
 <br>
 
             <input class="corto" type="text" name = "nombre" placeholder="Nombre de la Mascota" required>
-            
-            //NO MUESTRA LAS OPCIONES
-            
-            <input type="string" multiple name="raza" id="raza" list="razas" required size="64" />
-            <datalist  name="raza">
+                        
+            <input type="text" name="raza" id="raza" list="razas" required autocomplete="off" placeholder="Raza">
+
+            <datalist id="razas">
                 @foreach (Raza raza in ViewBag.Razas)
                 {
-                    <option name = "@raza.nombre" value="raza">@raza.nombre</option>
+                    <option value="@raza.nombre"></option>
                 }
-                
-            </datalist >
+            </datalist>
 
-            <br><p>Fecha de nacimiento:</p>
+            <br><br><p>Fecha de nacimiento:</p>
             <input class="largo"  name = "fechaNacimiento" type="date" placeholder="Fecha de Nacimiento de la Mascota" required><br>
             <input class="largo" name = "foto" type="file" placeholder="Subir Foto de la Mascota" required><br><br>
 

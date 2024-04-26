@@ -208,6 +208,8 @@ input:active {
   border-style: dashed;
   padding-left: 5em;
   padding-right: 5em;
+  padding-top: 5em;
+  padding-bottom: 5em;
 }
 
 
@@ -216,6 +218,8 @@ input:active {
   display: flex;
   justify-content: center;
   margin-top: 6em;
+  margin-left: 20em;
+  margin-right: 20em;
 }
 
 .infoElegirMascota {
@@ -224,10 +228,17 @@ input:active {
   padding: 20px;
   width: 250px; /* Ancho fijo para los contenedores */
   height: 250px; /* Altura fija para que sea un cuadrado */
-  display: flex; /* Para centrar el contenido verticalmente */
   justify-content: center; /* Para centrar el contenido horizontalmente */
   align-items: center; /* Para centrar el contenido verticalmente */
   margin: 10px; /* Espacio entre los contenedores */
+}
+
+.formElegirMascota{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .infoElegirMascota img {

@@ -20,7 +20,7 @@
 
         <div class="imagenes">
 
-          <form method = "post" action= '@Url.Action("C_ElegirMascota")'>
+          <form class = "formElegirMascota" method = "post" action= '@Url.Action("C_ElegirMascota")'>
 
             @foreach (Mascota mascota in ViewBag.Mascotas)
             {
@@ -32,15 +32,15 @@
               </div>
             }
 
-          </form>
+          
 
           <div class="info">
             <a class = "botonPrimario" href='@Url.Action("C_AgregarMascotaView", new {IdDueno = @ViewBag.IdDueno})'>+</a>
           </div>
-
+        </form>
         </div>
 
-      </div><br><br>
+      <br><br>
 
     
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
